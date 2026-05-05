@@ -15,9 +15,9 @@ public class WeaponHolster : MonoBehaviour
 
     private void Update()
     {
-        if (currentWeapon.CanAttack() && Input.GetKey(KeyCode.Mouse0))
+        if (currentWeapon.CanAttack(transform) && Input.GetKey(KeyCode.Mouse0))
         {
-            currentWeapon.Attack();
+            currentWeapon.Attack(true);
         }
     }
 
