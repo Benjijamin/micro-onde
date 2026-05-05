@@ -88,8 +88,6 @@ public class Echolocation : MonoBehaviour
                 wave.Nodes.Remove(node);
                 nodePool.Enqueue(node);
             };
-
-            Debug.Log("NodePool = " + nodePool.Count);
         }
 
         waves.Add(wave);
