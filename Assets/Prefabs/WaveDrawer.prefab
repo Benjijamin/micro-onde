@@ -44,17 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a259710fb45cb424aa6090a08baee9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveFrontDrawer
-  usedToSegments: []
-  usedInnerSegments: []
-  usedFromSegments: []
   poolSize: 50
   breakDistance: 5
-  toLineRendererPrefab: {fileID: 616707285682859595, guid: b08d7fcc1b3d1ba45aad7d4619920598, type: 3}
-  innerLineRendererPrefab: {fileID: 616707285682859595, guid: 793371bc8414d5a44ad2d2f0c6ed0348, type: 3}
-  fromLineRendererPrefab: {fileID: 616707285682859595, guid: f2afadfff3779b249a0134498f86e3c0, type: 3}
-  points:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  bounces: 00000000000000000000000000000000
+  drawFrequency: 1
+  lineRendererPrefab: {fileID: 616707285682859595, guid: f2afadfff3779b249a0134498f86e3c0, type: 3}
