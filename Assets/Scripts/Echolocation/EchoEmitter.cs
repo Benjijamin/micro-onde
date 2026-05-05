@@ -13,9 +13,11 @@ public class EchoEmitter : MonoBehaviour
 
     private IEnumerator EmitWaves(int count, float interval)
     {
+        Vector3 dirSnapshot = transform.right;
+
         for (int i = 0; i < count; i++)
         {
-            Echolocation.instance.EmitWave(transform.position, transform.right, settings.Speed, settings.ConeAngle, settings.Radius, settings.LifeTime, settings.MaxBounces, settings.NbNodePerWave);
+            Echolocation.instance.EmitWave(transform.position, dirSnapshot, settings.Speed, settings.ConeAngle, settings.Radius, settings.LifeTime, settings.MaxBounces, settings.NbNodePerWave);
             yield return new WaitForSeconds(interval);
         }
     }

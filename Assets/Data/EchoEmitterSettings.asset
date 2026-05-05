@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0054fadb722aef4199ea65abd1498b4, type: 3}
   m_Name: EchoEmitterSettings
   m_EditorClassIdentifier: Assembly-CSharp::EchoEmitterSettings
-  NbWaves: 3
-  TimeInterval: 0.3
-  Speed: 4
-  ConeAngle: 90
+  NbWaves: 4
+  TimeInterval: 0.2
+  Speed: 6
+  ConeAngle: 45
   Radius: 0.2
   LifeTime: 5
   MaxBounces: 4
-  NbNodePerWave: 60
+  NbNodePerWave: 30
