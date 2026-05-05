@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 38132fae28f76764fb160deaa45f648d
+=======
 guid: c7e50ae8519ebc1489bc1d77fd1d7cf9
+>>>>>>> echolocation
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
