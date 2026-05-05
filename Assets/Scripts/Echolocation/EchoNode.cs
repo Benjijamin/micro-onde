@@ -11,7 +11,7 @@ public class EchoNode : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position += transform.up * Speed * Time.deltaTime;
+        transform.position += transform.up * Speed * Time.fixedDeltaTime;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
