@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8915152612700775843}
   m_Layer: 6
   m_Name: EchoNode
-  m_TagString: Untagged
+  m_TagString: Echo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
