@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EchoNode : MonoBehaviour
@@ -5,6 +6,8 @@ public class EchoNode : MonoBehaviour
     public int MaxBounces { get; set; }
     public float Speed { get; set; }
     public int CurrentBounces { get; private set; }
+
+    public Action onDestroy;
 
     private void FixedUpdate()
     {
@@ -19,5 +22,10 @@ public class EchoNode : MonoBehaviour
 
         Vector2 reflectDir = Vector2.Reflect(transform.up, collision.contacts[0].normal);
         transform.up = reflectDir;
+    }
+
+    private void OnDestroy()
+    {
+        onDestroy?.Invoke();
     }
 }

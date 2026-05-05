@@ -12,6 +12,7 @@ public class WaveFrontDrawer : MonoBehaviour
     private class Segment
     {
         public LineRenderer lineRenderer;
+        public List<Transform> transforms;
 
         public void Clean()
         {
@@ -19,38 +20,32 @@ public class WaveFrontDrawer : MonoBehaviour
         }
     }
 
-    //[Serializable]
-    //private class WaveFront
-    //{
-        [SerializeField]
-        List<Segment> usedToSegments = new List<Segment>();
-        [SerializeField]
-        List<Segment> usedInnerSegments = new List<Segment>();
-        [SerializeField]
-        List<Segment> usedFromSegments = new List<Segment>();
-    //}
+    [SerializeField]
+    List<Segment> usedToSegments = new List<Segment>();
+    [SerializeField]
+    List<Segment> usedFromSegments = new List<Segment>();
 
     Queue<Segment> toSegmentPool;
-    Queue<Segment> innerSegmentPool;
     Queue<Segment> fromSegmentPool;
 
     [SerializeField]
-    int poolSize = 50;
+    private int poolSize = 50;
 
     [SerializeField]
-    float breakDistance = 2f;
+    private float breakDistance = 2f;
+
+    [SerializeField]
+    private float drawFrequency = 1.0f;
+    private float drawTimer = 0f;
 
     [SerializeField]
     LineRenderer toLineRendererPrefab;
-    [SerializeField]
-    LineRenderer innerLineRendererPrefab;
     [SerializeField]
     LineRenderer fromLineRendererPrefab;
 
     void Start()
     {
         toSegmentPool = new Queue<Segment>();
-        innerSegmentPool = new Queue<Segment>();
         fromSegmentPool = new Queue<Segment>();
 
         for (int i = 0; i < poolSize; i++) 
@@ -59,10 +54,6 @@ public class WaveFrontDrawer : MonoBehaviour
             {
                 lineRenderer = Instantiate(toLineRendererPrefab, transform)
             });
-            innerSegmentPool.Enqueue(new Segment
-            {
-                lineRenderer = Instantiate(innerLineRendererPrefab, transform)
-            });
             fromSegmentPool.Enqueue(new Segment
             {
                 lineRenderer = Instantiate(fromLineRendererPrefab, transform)
@@ -70,56 +61,69 @@ public class WaveFrontDrawer : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    List<Transform> points;
-    [SerializeField]
-    List<int> bounces;
-
-    [ContextMenu("Test")]
-    public void Test() 
+    void Update() 
     {
-        List<(Transform, int)> ppp = new List<(Transform, int)>();
-        for(int i = 0; i < points.Count; i++) 
-        {
-            ppp.Add((points[i], bounces[i]));
-        }
-
-        DrawWaveFront(ppp);
+        drawTimer += Time.deltaTime;
     }
 
-    public void DrawWaveFront(List<(Transform, int)> points)
+    public void DrawWaveFronts(List<EchoWave> waves) 
     {
-        CleanSegments();
+        if (drawTimer > drawFrequency)
+        {
+            CleanSegments();
 
-        List<Vector3> currentSegment = new List<Vector3>();
+            foreach (EchoWave wave in waves)
+            {
+                DrawWaveFront(wave);
+            }
+
+            drawTimer = 0f;
+        }
+    }
+
+    private void DrawWaveFront(EchoWave wave)
+    {
+        Vector3[] currentSegment = new Vector3[wave.Nodes.Count + 1];
+        int segmentCount = 0;
         int bounceType = 0;
 
-        for (int i = 0; i < points.Count; i++) 
+        for (int i = 0; i < wave.Nodes.Count; i++) 
         {
-            (Transform, int) cp = points[i];
-            (Transform, int) np = points[(i + 1) % points.Count];
+            EchoNode cn = wave.Nodes[i];
+            EchoNode nn = wave.Nodes[(i + 1) % wave.Nodes.Count];
 
-            if (Vector3.Distance(cp.Item1.position, np.Item1.position) > breakDistance) 
+            //Remplacer par le collision break
+            if (Vector3.Distance(cn.transform.position, nn.transform.position) > breakDistance) 
             {
-                if (currentSegment.Count != 0) { AssignSegment(currentSegment, bounceType); currentSegment.Clear(); }
+                if (segmentCount != 0) 
+                { 
+                    AssignSegment(currentSegment, segmentCount, bounceType); 
+                    segmentCount = 0; 
+                }
                 continue;
             }
 
-            if (cp.Item2%2 == np.Item2%2)
+            if (cn.CurrentBounces % 2 == nn.CurrentBounces % 2)
             {
-                if (currentSegment.Count == 0) currentSegment.Add(cp.Item1.position);
-                bounceType = cp.Item2%2;
-                currentSegment.Add(np.Item1.position);
-                if (np == points[0]) AssignSegment(currentSegment, bounceType);
+                if (segmentCount == 0)
+                {
+                    currentSegment[segmentCount++] = cn.transform.position;
+                }
+                bounceType = cn.CurrentBounces % 2;
+                currentSegment[segmentCount++] = nn.transform.position;
+                if (nn == wave.Nodes[0])
+                {
+                    AssignSegment(currentSegment, segmentCount, bounceType);
+                    segmentCount = 0;
+                }
             }
             else 
             {
-                if (currentSegment.Count != 0) AssignSegment(currentSegment, bounceType);
-                currentSegment.Clear();
-                currentSegment.Add(cp.Item1.position);
-                currentSegment.Add(np.Item1.position);
-                AssignSegment(currentSegment, -1);
-                currentSegment.Clear();
+                if (segmentCount != 0) 
+                { 
+                    AssignSegment(currentSegment, segmentCount, bounceType); 
+                }
+                segmentCount = 0;
             }
         }
     }
@@ -131,13 +135,6 @@ public class WaveFrontDrawer : MonoBehaviour
             s.Clean();
             toSegmentPool.Enqueue(s);
         }
-        usedToSegments.Clear();
-        foreach (Segment s in usedInnerSegments)
-        {
-            s.Clean();
-            innerSegmentPool.Enqueue(s);
-        }
-        usedInnerSegments.Clear();
         foreach (Segment s in usedFromSegments)
         {
             s.Clean();
@@ -146,28 +143,14 @@ public class WaveFrontDrawer : MonoBehaviour
         usedFromSegments.Clear();
     }
 
-    private void AssignSegment(List<Vector3> points, int bounceType) 
+    private void AssignSegment(Vector3[] points, int length, int bounceType) 
     {
-        Segment s;
-
-        switch (bounceType) 
-        {
-            case -1:
-                s = GetInnerSegment();
-                break;
-            case 0:
-                s = GetToSegment();
-                break;
-            case 1:
-                s = GetFromSegment();
-                break;
-            default: s = null; break;
-        }
+        Segment s = bounceType == 0 ? GetToSegment() : GetFromSegment();
 
         if (s != null)
         {
-            s.lineRenderer.positionCount = points.Count;
-            s.lineRenderer.SetPositions(points.ToArray());
+            s.lineRenderer.positionCount = length;
+            s.lineRenderer.SetPositions(points);
         }
         else
         {
@@ -181,14 +164,6 @@ public class WaveFrontDrawer : MonoBehaviour
         usedToSegments.Add(s);
         return s;
     }
-
-    private Segment GetInnerSegment() 
-    {
-        Segment s = innerSegmentPool.Dequeue();
-        usedInnerSegments.Add(s);
-        return s;
-    }
-
     private Segment GetFromSegment() 
     {
         Segment s = fromSegmentPool.Dequeue();

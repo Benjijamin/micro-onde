@@ -7,6 +7,8 @@ public class Echolocation : MonoBehaviour
     [SerializeField] private GameObject EchoNodePrefab;
     private List<EchoWave> waves = new List<EchoWave>();
 
+    private WaveFrontDrawer drawer;
+
     public static Echolocation instance { get; private set; }
     private void Awake()
     {
@@ -18,12 +20,16 @@ public class Echolocation : MonoBehaviour
         {
             instance = this;
         }
+
+        drawer = GetComponentInChildren<WaveFrontDrawer>();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
             EmitWave(transform.position, .5f, transform.up, 5, 2, 90, 60);
+
+        drawer.DrawWaveFronts(waves);
     }
 
     public void EmitWave(Vector2 pos, float startRadius, Vector2 dir, float lifeTime, float speed, float angle, int nbNodes)
@@ -39,7 +45,6 @@ public class Echolocation : MonoBehaviour
 
         for (int i = 0; i < nbNodes; i++)
         {
-
             float currentAngle = startAngle + (angleStep * i);
 
             Quaternion rotation = Quaternion.AngleAxis(currentAngle, Vector3.forward);
@@ -54,6 +59,7 @@ public class Echolocation : MonoBehaviour
             newNode.Speed = speed;
             newNode.MaxBounces = 5;
             wave.Nodes.Add(newNode);
+            newNode.onDestroy += () => wave.Nodes.Remove(newNode);
         }
 
         waves.Add(wave);
