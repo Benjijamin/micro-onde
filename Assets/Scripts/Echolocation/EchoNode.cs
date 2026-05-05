@@ -19,11 +19,17 @@ public class EchoNode : MonoBehaviour
         CurrentBounces++;
         if (CurrentBounces >= MaxBounces)
         {
-            OnExpired?.Invoke();
-            gameObject.SetActive(false);
+            Expire();
         }
 
         Vector2 reflectDir = Vector2.Reflect(transform.up, collision.contacts[0].normal);
         transform.up = reflectDir;
+    }
+
+    public void Expire() 
+    {
+        OnExpired?.Invoke();
+        gameObject.SetActive(false);
+        OnExpired = null;
     }
 }

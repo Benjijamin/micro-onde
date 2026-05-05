@@ -1,3 +1,4 @@
+using AmplifyShaderEditor;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -104,10 +105,11 @@ public class Echolocation : MonoBehaviour
 
     private void RecycleWaveNodes(EchoWave echoWave)
     {
-        for (int i = 0; i < echoWave.Nodes.Count; i++)
-        {
-            echoWave.Nodes[i].gameObject.SetActive(false);
-            nodePool.Enqueue(echoWave.Nodes[i]);
+        if (echoWave.Nodes.Count > 0) {
+            for (int i = echoWave.Nodes.Count - 1; i >= 0; i--)
+            {
+                echoWave.Nodes[i].Expire();
+            } 
         }
     }
 }
