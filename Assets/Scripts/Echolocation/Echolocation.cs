@@ -37,10 +37,6 @@ public class Echolocation : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            EmitWave(transform.position, .5f, transform.up, 5, 4, 90, 60);
-
-
         for (int i = 0; i < waves.Count; ++i)
         {
             waves[i].CurrentlifeTime += Time.deltaTime;
@@ -54,7 +50,7 @@ public class Echolocation : MonoBehaviour
         drawer.DrawWaveFronts(waves);
     }
 
-    public void EmitWave(Vector2 pos, float startRadius, Vector2 dir, float lifeTime, float speed, float angle, int nbNodes)
+    public void EmitWave(Vector2 pos, Vector2 dir, float speed, float angle, float startRadius, float lifeTime, int maxBounces,  int nbNodes)
     {
         EchoWave wave = new EchoWave
         {
@@ -81,7 +77,7 @@ public class Echolocation : MonoBehaviour
             node.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, 0);
             node.transform.rotation = Quaternion.Euler(0, 0, newAngle - 90);
             node.Speed = speed;
-            node.MaxBounces = 5;
+            node.MaxBounces = maxBounces;
             node.CurrentBounces = 0;
             node.gameObject.SetActive(true);
             wave.Nodes.Add(node);
