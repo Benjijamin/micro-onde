@@ -16,7 +16,7 @@ public class Weapon : Interactable
         canAttack = true;
     }
 
-    public virtual void Attack()
+    public virtual void Attack(bool userIsPlayer)
     {
         StartCoroutine(AttackCooldown());
     }
@@ -28,7 +28,7 @@ public class Weapon : Interactable
         canAttack = true;
     }
 
-    public virtual bool CanAttack()
+    public virtual bool CanAttack(Transform user = null)
     {
         return canAttack;
     }

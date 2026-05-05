@@ -1,0 +1,24 @@
+using System.Collections;
+using UnityEngine;
+
+public class EchoEmitter : MonoBehaviour
+{
+    [SerializeField] private EchoEmitterSettings settings;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            StartCoroutine(EmitWaves(settings.NbWaves, settings.TimeInterval)); 
+    }
+
+    private IEnumerator EmitWaves(int count, float interval)
+    {
+        Vector3 dirSnapshot = transform.right;
+
+        for (int i = 0; i < count; i++)
+        {
+            Echolocation.instance.EmitWave(transform.position, dirSnapshot, settings.Speed, settings.ConeAngle, settings.Radius, settings.LifeTime, settings.MaxBounces, settings.NbNodePerWave);
+            yield return new WaitForSeconds(interval);
+        }
+    }
+}
