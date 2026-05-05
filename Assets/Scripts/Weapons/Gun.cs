@@ -10,20 +10,23 @@ public class Gun : Weapon
     [SerializeField] protected int ammoCount;
     [SerializeField] protected float bulletVelocity;
 
-    public override void Attack()
+    public override void Attack(bool userIsPlayer)
     {
-        base.Attack();
-        ammoCount--;
-        Shoot();
+        base.Attack(userIsPlayer);
+        if (userIsPlayer)
+        {
+            ammoCount--;
+        }
+        Shoot(userIsPlayer);
         OnAttack?.Invoke(ammoCount, maxAmmoCount);
     }
 
-    protected virtual void Shoot()
+    protected virtual void Shoot(bool usedByPlayer)
     {
-        print("pew");
+
     }
 
-    public override bool CanAttack()
+    public override bool CanAttack(Transform user)
     {
         return base.CanAttack() && ammoCount > 0;
     }
