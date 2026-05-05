@@ -16,6 +16,7 @@ public class WaveFrontDrawer : MonoBehaviour
         public void Clean()
         {
             lineRenderer.positionCount = 0;
+            lineRenderer.enabled = false;
         }
     }
 
@@ -90,7 +91,7 @@ public class WaveFrontDrawer : MonoBehaviour
                 }
                 continue;
             }
-            else if (cn.CurrentBounces % 2 == nn.CurrentBounces % 2)
+            else
             {
                 if (segmentCount == 0)
                 {
@@ -103,39 +104,6 @@ public class WaveFrontDrawer : MonoBehaviour
                     segmentCount = 0;
                 }
             }
-            else 
-            {
-                if (segmentCount != 0)
-                {
-                    AssignSegment(currentSegment, segmentCount);
-                }
-                segmentCount = 0;
-            }
-
-            /*
-            if (cn.CurrentBounces % 2 == nn.CurrentBounces % 2)
-            {
-                if (segmentCount == 0)
-                {
-                    currentSegment[segmentCount++] = cn.transform.position;
-                }
-                bounceType = cn.CurrentBounces % 2;
-                currentSegment[segmentCount++] = nn.transform.position;
-                if (nn == wave.Nodes[0])
-                {
-                    AssignSegment(currentSegment, segmentCount, bounceType);
-                    segmentCount = 0;
-                }
-            }
-            else 
-            {
-                if (segmentCount != 0) 
-                { 
-                    AssignSegment(currentSegment, segmentCount, bounceType); 
-                }
-                segmentCount = 0;
-            }
-            */
         }
     }
 
@@ -169,6 +137,7 @@ public class WaveFrontDrawer : MonoBehaviour
         if (segmentPool.Count > 0)
         {
             Segment s = segmentPool.Dequeue();
+            s.lineRenderer.enabled = true;
             usedSegments.Enqueue(s);
             return s;
         }
