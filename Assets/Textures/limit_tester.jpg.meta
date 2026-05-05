@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ef01c1f086249db42a435b472de1f43d
+guid: 48013bbfba870e54abf03ca94cba5e33
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8968452597330345834
-    second: GradientVerticalInvert_0
+      213: 773764967106276706
+    second: limit_tester_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GradientVerticalInvert_0
+      name: limit_tester_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 690023f21e7a98380800000000000000
-      internalID: -8968452597330345834
+      spriteID: 26de2045327fcba00800000000000000
+      internalID: 773764967106276706
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GradientVerticalInvert_0: -8968452597330345834
+      limit_tester_0: 773764967106276706
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

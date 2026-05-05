@@ -6,32 +6,39 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[Serializable]
-public class Segment
-{
-    public LineRenderer lineRenderer;
-
-    public void Clean() 
-    {
-        lineRenderer.positionCount = 0;
-    }
-}
-
 public class WaveFrontDrawer : MonoBehaviour
 {
+    [Serializable]
+    private class Segment
+    {
+        public LineRenderer lineRenderer;
+
+        public void Clean()
+        {
+            lineRenderer.positionCount = 0;
+        }
+    }
+
+    //[Serializable]
+    //private class WaveFront
+    //{
+        [SerializeField]
+        List<Segment> usedToSegments = new List<Segment>();
+        [SerializeField]
+        List<Segment> usedInnerSegments = new List<Segment>();
+        [SerializeField]
+        List<Segment> usedFromSegments = new List<Segment>();
+    //}
+
     Queue<Segment> toSegmentPool;
     Queue<Segment> innerSegmentPool;
     Queue<Segment> fromSegmentPool;
 
     [SerializeField]
-    List<Segment> usedToSegments = new List<Segment>();
-    [SerializeField]
-    List<Segment> usedInnerSegments = new List<Segment>();
-    [SerializeField]
-    List<Segment> usedFromSegments = new List<Segment>();
+    int poolSize = 50;
 
     [SerializeField]
-    int poolSize = 50;
+    float breakDistance = 2f;
 
     [SerializeField]
     LineRenderer toLineRendererPrefab;
@@ -92,10 +99,16 @@ public class WaveFrontDrawer : MonoBehaviour
             (Transform, int) cp = points[i];
             (Transform, int) np = points[(i + 1) % points.Count];
 
-            if (cp.Item2 == np.Item2)
+            if (Vector3.Distance(cp.Item1.position, np.Item1.position) > breakDistance) 
+            {
+                if (currentSegment.Count != 0) { AssignSegment(currentSegment, bounceType); currentSegment.Clear(); }
+                continue;
+            }
+
+            if (cp.Item2%2 == np.Item2%2)
             {
                 if (currentSegment.Count == 0) currentSegment.Add(cp.Item1.position);
-                bounceType = cp.Item2;
+                bounceType = cp.Item2%2;
                 currentSegment.Add(np.Item1.position);
                 if (np == points[0]) AssignSegment(currentSegment, bounceType);
             }
@@ -141,40 +154,24 @@ public class WaveFrontDrawer : MonoBehaviour
         {
             case -1:
                 s = GetInnerSegment();
-                if (s != null)
-                {
-                    s.lineRenderer.positionCount = points.Count;
-                    s.lineRenderer.SetPositions(points.ToArray());
-                }
-                else 
-                {
-                    Debug.LogError("Not enough segments in the pool!");
-                }
                 break;
             case 0:
                 s = GetToSegment();
-                if (s != null) 
-                {
-                    s.lineRenderer.positionCount = points.Count;
-                    s.lineRenderer.SetPositions(points.ToArray());
-                }
-                else
-                {
-                    Debug.LogError("Not enough segments in the pool!");
-                }
-        break;
+                break;
             case 1:
                 s = GetFromSegment();
-                if (s != null) {
-                    s.lineRenderer.positionCount = points.Count;
-                    s.lineRenderer.SetPositions(points.ToArray());
-                }
-                else
-                {
-                    Debug.LogError("Not enough segments in the pool!");
-                }
-        break;
-            default: break;
+                break;
+            default: s = null; break;
+        }
+
+        if (s != null)
+        {
+            s.lineRenderer.positionCount = points.Count;
+            s.lineRenderer.SetPositions(points.ToArray());
+        }
+        else
+        {
+            Debug.LogError("Not enough segments in the pool!");
         }
     }
 
