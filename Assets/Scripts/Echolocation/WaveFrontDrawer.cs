@@ -16,7 +16,6 @@ public class WaveFrontDrawer : MonoBehaviour
         public void Clean()
         {
             lineRenderer.positionCount = 0;
-            lineRenderer.enabled = false;
         }
     }
 
@@ -64,15 +63,26 @@ public class WaveFrontDrawer : MonoBehaviour
 
             foreach (EchoWave wave in waves)
             {
-                DrawWaveFront(wave);
+                bool[] connectedNodes = DrawWaveFront(wave);
+                if (wave.Nodes.Count > 0)
+                {
+                    for (int i = wave.Nodes.Count - 1; i >= 0; i--)
+                    {
+                        if (!connectedNodes[i])
+                        {
+                            wave.Nodes[i].Expire();
+                        }
+                    }
+                }
             }
 
             drawTimer = 0f;
         }
     }
 
-    private void DrawWaveFront(EchoWave wave)
+    private bool[] DrawWaveFront(EchoWave wave)
     {
+        bool[] connectedNodes = new bool[wave.Nodes.Count];
         Vector3[] currentSegment = new Vector3[wave.Nodes.Count + 1];
         int segmentCount = 0;
 
@@ -96,8 +106,10 @@ public class WaveFrontDrawer : MonoBehaviour
                 if (segmentCount == 0)
                 {
                     currentSegment[segmentCount++] = cn.transform.position;
+                    connectedNodes[i] = true;
                 }
                 currentSegment[segmentCount++] = nn.transform.position;
+                connectedNodes[(i+1) % wave.Nodes.Count] = true;
                 if (nn == wave.Nodes[0])
                 {
                     AssignSegment(currentSegment, segmentCount);
@@ -105,6 +117,8 @@ public class WaveFrontDrawer : MonoBehaviour
                 }
             }
         }
+
+        return connectedNodes;
     }
 
     private void CleanSegments() 
@@ -137,7 +151,6 @@ public class WaveFrontDrawer : MonoBehaviour
         if (segmentPool.Count > 0)
         {
             Segment s = segmentPool.Dequeue();
-            s.lineRenderer.enabled = true;
             usedSegments.Enqueue(s);
             return s;
         }
