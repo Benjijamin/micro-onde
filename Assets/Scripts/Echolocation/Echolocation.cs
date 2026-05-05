@@ -38,7 +38,7 @@ public class Echolocation : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            EmitWave(transform.position, .5f, transform.up, 5, 2, 90, 60);
+            EmitWave(transform.position, .5f, transform.up, 5, 4, 90, 60);
 
 
         for (int i = 0; i < waves.Count; ++i)
@@ -82,6 +82,7 @@ public class Echolocation : MonoBehaviour
             node.transform.rotation = Quaternion.Euler(0, 0, newAngle - 90);
             node.Speed = speed;
             node.MaxBounces = 5;
+            node.CurrentBounces = 0;
             node.gameObject.SetActive(true);
             wave.Nodes.Add(node);
 
