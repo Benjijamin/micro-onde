@@ -12,6 +12,7 @@ public class WaveFrontDrawer : MonoBehaviour
     private class Segment
     {
         public LineRenderer lineRenderer;
+        public Gradient gradient;
 
         public void Clean()
         {
@@ -45,7 +46,8 @@ public class WaveFrontDrawer : MonoBehaviour
         {
             segmentPool.Enqueue(new Segment
             {
-                lineRenderer = Instantiate(lineRendererPrefab, transform)
+                lineRenderer = Instantiate(lineRendererPrefab, transform),
+                gradient = new Gradient()
             });
         }
     }
@@ -85,6 +87,7 @@ public class WaveFrontDrawer : MonoBehaviour
         bool[] connectedNodes = new bool[wave.Nodes.Count];
         Vector3[] currentSegment = new Vector3[wave.Nodes.Count + 1];
         int segmentCount = 0;
+        float alpha = 1 - (wave.CurrentlifeTime / wave.MaxlifeTime);
 
         for (int i = 0; i < wave.Nodes.Count; i++) 
         {
@@ -96,7 +99,7 @@ public class WaveFrontDrawer : MonoBehaviour
             {
                 if (segmentCount != 0)
                 {
-                    AssignSegment(currentSegment, segmentCount);
+                    AssignSegment(currentSegment, alpha, segmentCount);
                     segmentCount = 0;
                 }
                 continue;
@@ -112,7 +115,7 @@ public class WaveFrontDrawer : MonoBehaviour
                 connectedNodes[(i+1) % wave.Nodes.Count] = true;
                 if (nn == wave.Nodes[0])
                 {
-                    AssignSegment(currentSegment, segmentCount);
+                    AssignSegment(currentSegment, alpha, segmentCount);
                     segmentCount = 0;
                 }
             }
@@ -131,7 +134,7 @@ public class WaveFrontDrawer : MonoBehaviour
         }
     }
 
-    private void AssignSegment(Vector3[] points, int length) 
+    private void AssignSegment(Vector3[] points, float alpha, int length) 
     {
         Segment s = GetSegment();
 
@@ -139,6 +142,14 @@ public class WaveFrontDrawer : MonoBehaviour
         {
             s.lineRenderer.positionCount = length;
             s.lineRenderer.SetPositions(points);
+
+            GradientAlphaKey[] alphaKeys = new GradientAlphaKey[]
+            {
+                new GradientAlphaKey(alpha, 0)
+            };
+
+            s.gradient.SetAlphaKeys(alphaKeys);
+            s.lineRenderer.colorGradient = s.gradient;
         }
         else
         {
