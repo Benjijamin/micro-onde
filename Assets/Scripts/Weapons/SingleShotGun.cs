@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Pistol : Gun
+public class SingleShotGun : Gun
 {
     protected override void Shoot(bool usedByPlayer)
     {

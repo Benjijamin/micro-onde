@@ -11,6 +11,7 @@ public class WeaponHolster : MonoBehaviour
     private void Start()
     {
         Weapon.OnPickUp += SwapWeapon;
+        defaultWeapon.wielder = transform;
     }
 
     private void Update()
@@ -50,6 +51,7 @@ public class WeaponHolster : MonoBehaviour
         currentWeapon.transform.SetParent(hand);
         currentWeapon.transform.position = hand.position;
         currentWeapon.transform.rotation = hand.rotation;
+        currentWeapon.wielder = transform;
     }
 
     private void SwapToDefaultOnAmmoEmpty(int ammoCount, int arg2)

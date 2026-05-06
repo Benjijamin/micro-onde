@@ -6,6 +6,8 @@ public class Weapon : Interactable
 {
     public static Action<Weapon> OnPickUp;
 
+    public Transform wielder;
+
     [SerializeField] protected float attackCooldown;
     [SerializeField] protected int damage;
 
@@ -43,5 +45,6 @@ public class Weapon : Interactable
     public virtual void Drop()
     {
         GetComponent<CircleCollider2D>().enabled = true;
+        wielder = null;
     }
 }

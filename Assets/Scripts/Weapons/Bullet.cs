@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
         }
         if (enemy != null)
         {
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(damage, GetComponent<Rigidbody2D>().linearVelocity.normalized);
             Destroy(gameObject);
         }
         else if (wallLayer == (wallLayer | (1 << collision.gameObject.layer)))

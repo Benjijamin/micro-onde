@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
         agent.updateUpAxis = false;
         agent.updateRotation = false;
         weapon.GetComponent<CircleCollider2D>().enabled = false;
+        weapon.wielder = transform;
     }
 
     public NavMeshAgent GetAgent()

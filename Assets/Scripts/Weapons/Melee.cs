@@ -12,13 +12,14 @@ public class Melee : Weapon
         Collider2D[] enemies = Physics2D.OverlapBoxAll(transform.root.position + (transform.root.right * swingBoxDimensions.y), swingBoxDimensions, transform.root.rotation.z, userIsPlayer ? enemyLayer : playerLayer);
         foreach (Collider2D enemy in enemies)
         {
+            Vector2 direction = (enemy.transform.position - wielder.position).normalized;
             if (userIsPlayer)
             {
-                enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
+                enemy.GetComponent<EnemyHealth>().TakeDamage(damage, direction);
             }
             else
             {
-                enemy.GetComponent<PlayerHealth>().TakeDamage(damage);
+                enemy.GetComponent<PlayerHealth>().TakeDamage(damage, direction);
             }
         }
     }
