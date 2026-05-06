@@ -37,5 +37,11 @@ public class Weapon : Interactable
     {
         base.Interact();
         OnPickUp?.Invoke(this);
+        GetComponent<CircleCollider2D>().enabled = false;
+    }
+
+    public virtual void Drop()
+    {
+        GetComponent<CircleCollider2D>().enabled = true;
     }
 }
