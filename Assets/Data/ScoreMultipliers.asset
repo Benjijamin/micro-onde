@@ -12,24 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79cfe35a5861a384eba50864154d1d7d, type: 3}
   m_Name: ScoreMultipliers
   m_EditorClassIdentifier: Assembly-CSharp::ScoreMultipliers
+  killMultiSpeedup: 0.1
   killScore: 500
   killMultiplier: 1
   killDuration: 3
-  meleeScore: 200
+  bonusMultiSpeedup: 0.02
+  meleeScore: 213
   meleeMultiplier: 1
   meleeDuration: 5
-  dodgeScore: 100
+  dodgeScore: 106
   dodgeMultiplier: 0.5
   dodgeDuration: 1
   gunSwapScore: 0
   gunSwapMultiplier: 0.2
   gunSwapDuration: 3
-  stealthKillScore: 200
+  stealthKillScore: 199
   stealthKillMultiplier: 0.5
   stealthKillDuration: 5
-  blindKillScore: 500
+  blindKillScore: 555
   blindKillMultiplier: 3
   blindKillDuration: 1
-  multiScanScore: 100
+  multiScanScore: 69
   multiScanMultiplier: 0.3
   multiScanDuration: 2
+  lastBulletScore: 67
+  lastBulletMultiplier: 0.1
+  lastBulletDuration: 2
