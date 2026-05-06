@@ -1245,6 +1245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EchoEmitter
   settings: {fileID: 11400000, guid: a87e9ee8fdf437543bc35241c82b9d26, type: 2}
+  cooldown: 2
 --- !u!1 &1010686920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,9 +1334,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 468980199491111000, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
+      propertyPath: heldSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7df7ba5c6c84fff419ee076cea4f2b09, type: 3}
+    - target: {fileID: 468980199491111000, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
+      propertyPath: droppedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: da19439e9379f414788d8454d7a500df, type: 3}
     - target: {fileID: 3090884948612514739, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
       propertyPath: m_Name
       value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270861006043317155, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270861006043317155, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270861006043317155, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3270861006043317155, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1376,6 +1397,26 @@ PrefabInstance:
     - target: {fileID: 3270861006043317155, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270861006043317155, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070765317825174219, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: da19439e9379f414788d8454d7a500df, type: 3}
+    - target: {fileID: 6070765317825174219, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070765317825174219, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070765317825174219, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2139,6 +2180,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 318775849694767348, guid: 8fa5285360ceb6649aba2763b99e0624, type: 3}
+      propertyPath: heldSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e99976d6aff79542ad749ab099d2db4, type: 3}
+    - target: {fileID: 318775849694767348, guid: 8fa5285360ceb6649aba2763b99e0624, type: 3}
+      propertyPath: droppedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 020a8d8282c6cea41959346935a5dfa6, type: 3}
+    - target: {fileID: 1895599983648990310, guid: 8fa5285360ceb6649aba2763b99e0624, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895599983648990310, guid: 8fa5285360ceb6649aba2763b99e0624, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895599983648990310, guid: 8fa5285360ceb6649aba2763b99e0624, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1895599983648990310, guid: 8fa5285360ceb6649aba2763b99e0624, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.57
@@ -2179,6 +2240,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1895599983648990310, guid: 8fa5285360ceb6649aba2763b99e0624, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418890898007091084, guid: 8fa5285360ceb6649aba2763b99e0624, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 020a8d8282c6cea41959346935a5dfa6, type: 3}
+    - target: {fileID: 7418890898007091084, guid: 8fa5285360ceb6649aba2763b99e0624, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418890898007091084, guid: 8fa5285360ceb6649aba2763b99e0624, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418890898007091084, guid: 8fa5285360ceb6649aba2763b99e0624, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8068340039611268369, guid: 8fa5285360ceb6649aba2763b99e0624, type: 3}
       propertyPath: m_Name
       value: Sniper
@@ -2196,9 +2277,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 492381420819712708, guid: de432726cc0137944bcbc3bd140221a6, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 492381420819712708, guid: de432726cc0137944bcbc3bd140221a6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9aa4eca1241e31d41b3d959d56c45354, type: 3}
+    - target: {fileID: 492381420819712708, guid: de432726cc0137944bcbc3bd140221a6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 492381420819712708, guid: de432726cc0137944bcbc3bd140221a6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 492381420819712708, guid: de432726cc0137944bcbc3bd140221a6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 492381420819712708, guid: de432726cc0137944bcbc3bd140221a6, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1522926570428226689, guid: de432726cc0137944bcbc3bd140221a6, type: 3}
       propertyPath: m_Name
       value: Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546483706896054456, guid: de432726cc0137944bcbc3bd140221a6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546483706896054456, guid: de432726cc0137944bcbc3bd140221a6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2546483706896054456, guid: de432726cc0137944bcbc3bd140221a6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2240,6 +2353,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2546483706896054456, guid: de432726cc0137944bcbc3bd140221a6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698070484393354494, guid: de432726cc0137944bcbc3bd140221a6, type: 3}
+      propertyPath: heldSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1c71d62bc4c458b4193b280e1419ddf3, type: 3}
+    - target: {fileID: 4698070484393354494, guid: de432726cc0137944bcbc3bd140221a6, type: 3}
+      propertyPath: droppedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9aa4eca1241e31d41b3d959d56c45354, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2256,6 +2381,22 @@ PrefabInstance:
     - target: {fileID: 355586299519177659, guid: 02157e7a994ea3742be103c699e0941a, type: 3}
       propertyPath: m_Name
       value: Smg
+      objectReference: {fileID: 0}
+    - target: {fileID: 4556145022470397153, guid: 02157e7a994ea3742be103c699e0941a, type: 3}
+      propertyPath: heldSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 57009d11e45f4fe4581bf2c03282b3da, type: 3}
+    - target: {fileID: 4556145022470397153, guid: 02157e7a994ea3742be103c699e0941a, type: 3}
+      propertyPath: droppedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2850678636e57204f9d3ac5ed6b1fc04, type: 3}
+    - target: {fileID: 5632284580161279157, guid: 02157e7a994ea3742be103c699e0941a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632284580161279157, guid: 02157e7a994ea3742be103c699e0941a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5632284580161279157, guid: 02157e7a994ea3742be103c699e0941a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2296,6 +2437,26 @@ PrefabInstance:
     - target: {fileID: 5632284580161279157, guid: 02157e7a994ea3742be103c699e0941a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632284580161279157, guid: 02157e7a994ea3742be103c699e0941a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368672968236458317, guid: 02157e7a994ea3742be103c699e0941a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2850678636e57204f9d3ac5ed6b1fc04, type: 3}
+    - target: {fileID: 8368672968236458317, guid: 02157e7a994ea3742be103c699e0941a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368672968236458317, guid: 02157e7a994ea3742be103c699e0941a, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8368672968236458317, guid: 02157e7a994ea3742be103c699e0941a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
