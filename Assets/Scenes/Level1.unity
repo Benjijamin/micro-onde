@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 44471844}
   - component: {fileID: 44471843}
   - component: {fileID: 44471842}
+  - component: {fileID: 44471845}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -319,6 +320,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &44471845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44471841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9573790b0aca54da1667b4592d8053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectFollow
+  objectToFollow: {fileID: 0}
+  baseOffset: {x: 0, y: 0, z: -10}
+  smoothTranslationTime: 0.2
+  maxPanAngle: 3
+  smoothRotationTime: 2
+  shakeMagnitude: 0.05
+  shakeDuration: 0.1
 --- !u!1 &90605503
 GameObject:
   m_ObjectHideFlags: 0

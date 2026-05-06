@@ -26,6 +26,7 @@ public class WeaponHolster : MonoBehaviour
         if (currentWeapon.CanAttack(transform) && Input.GetKey(KeyCode.Mouse0))
         {
             currentWeapon.Attack(true);
+            CameraManager.instance.Shake(0.05f, 0.05f);
         }
     }
 
