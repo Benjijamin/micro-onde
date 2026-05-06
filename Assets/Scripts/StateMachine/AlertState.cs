@@ -24,9 +24,21 @@ public class AlertState : RootState<Enemy>
         {
             parent.GetAgent().SetDestination(playerPos);
         }
+        else
+        {
+            direction = playerPos - (Vector2)parent.GetWeapon().transform.position;
+            angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            parent.GetWeapon().transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
         if (parent.GetWeapon().CanAttack(parent.transform))
         {
             parent.GetWeapon().Attack(false);
         }
+    }
+
+    public override void StateExit()
+    {
+        base.StateExit();
+        parent.GetAgent().isStopped = false;
     }
 }

@@ -15,6 +15,13 @@ public class WeaponHolster : MonoBehaviour
 
     private void Update()
     {
+        if (currentWeapon is Gun)
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 direction = (Vector2)mousePos - (Vector2)currentWeapon.transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            currentWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
         if (currentWeapon.CanAttack(transform) && Input.GetKey(KeyCode.Mouse0))
         {
             currentWeapon.Attack(true);
@@ -27,6 +34,7 @@ public class WeaponHolster : MonoBehaviour
         {
             currentWeapon.transform.SetParent(newWeapon.transform.parent);
             currentWeapon.transform.position = newWeapon.transform.position;
+            currentWeapon.Drop();
         }
         if(currentWeapon is Gun)
         {

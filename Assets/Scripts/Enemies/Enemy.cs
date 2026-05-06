@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,6 +15,7 @@ public class Enemy : MonoBehaviour
     {
         agent.updateUpAxis = false;
         agent.updateRotation = false;
+        weapon.GetComponent<CircleCollider2D>().enabled = false;
     }
 
     public NavMeshAgent GetAgent()
@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
         Vector3 dropPos = Quaternion.Euler(0, 0, Random.Range(0, 360f)) * transform.right * dropRadius;
         weapon.transform.position += dropPos;
         weapon.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
+        weapon.Drop();
     }
 
     private void Update()
