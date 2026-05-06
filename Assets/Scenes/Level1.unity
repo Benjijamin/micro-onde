@@ -336,9 +336,7 @@ MonoBehaviour:
   baseOffset: {x: 0, y: 0, z: -10}
   smoothTranslationTime: 0.2
   maxPanAngle: 3
-  smoothRotationTime: 2
-  shakeMagnitude: 0.05
-  shakeDuration: 0.1
+  smoothRotationTime: 3
 --- !u!1 &90605503
 GameObject:
   m_ObjectHideFlags: 0
