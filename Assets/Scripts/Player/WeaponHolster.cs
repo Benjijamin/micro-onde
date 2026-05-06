@@ -26,11 +26,13 @@ public class WeaponHolster : MonoBehaviour
         if (currentWeapon.CanAttack(transform) && Input.GetKey(KeyCode.Mouse0))
         {
             currentWeapon.Attack(true);
+            CameraManager.instance.Shake(0.05f, 0.05f);
         }
     }
 
     public void SwapWeapon(Weapon newWeapon)
     {
+        defaultWeapon.GetComponent<SpriteRenderer>().enabled = false;
         if(currentWeapon is not DefaultWeapon)
         {
             currentWeapon.transform.SetParent(newWeapon.transform.parent);
@@ -61,6 +63,7 @@ public class WeaponHolster : MonoBehaviour
             ammoCounter.TrackWeapon(defaultWeapon, currentWeapon);
             Destroy(currentWeapon.gameObject);
             currentWeapon = defaultWeapon;
+            defaultWeapon.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 }

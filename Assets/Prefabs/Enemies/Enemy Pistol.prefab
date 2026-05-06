@@ -136,13 +136,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolState
   parent: {fileID: 5053506284290928530}
-  distanceThreshold: 1.5
+  distanceThreshold: 1.75
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  pauseTime: {x: 0, y: 1}
+  pauseTime: {x: 2, y: 4}
   turnLerpValue: 0.1
 --- !u!1 &5111728266839530634
 GameObject:
@@ -186,6 +186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4616296495444382676}
+  - component: {fileID: 3904288830443690001}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -209,6 +210,28 @@ Transform:
   - {fileID: 4235043053856498088}
   m_Father: {fileID: 3383551772723570541}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &3904288830443690001
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5909004089349697991}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 41af629057addc948a96ce568b944212, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7201261040574192954
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +249,7 @@ GameObject:
   - component: {fileID: 6355142733437445916}
   m_Layer: 7
   m_Name: Enemy Pistol
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,10 +382,10 @@ MonoBehaviour:
   agent: {fileID: 6355142733437445916}
   stateMachine: {fileID: 9149796676348758571}
   weapon: {fileID: 1235020907238763091}
-  dropRadius: 0
+  dropRadius: 1
   rayMask:
     serializedVersion: 2
-    m_Bits: 631
+    m_Bits: 8311
   sightAngle: 45
   sightRange: 5
 --- !u!114 &3986657224932576299
@@ -377,7 +400,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e398aa5ab5a9f7242a7af87545aa9c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  health: 25
+  health: 1
+  bloodPrefabs:
+  - {fileID: 7751620612912553160, guid: 405065f8fb899354b8d6abee90017f24, type: 3}
+  bloodSplatDistance: {x: 0.5, y: 1}
 --- !u!114 &9149796676348758571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,11 +499,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3270861006043317155, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3270861006043317155, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.36
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3270861006043317155, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
       propertyPath: m_LocalScale.z
@@ -523,6 +549,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6070765317825174219, guid: 13e52f2ee53082342b7d3d084cb3ae15, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7df7ba5c6c84fff419ee076cea4f2b09, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

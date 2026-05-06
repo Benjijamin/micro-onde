@@ -10,12 +10,19 @@ public class Weapon : Interactable
 
     [SerializeField] protected float attackCooldown;
     [SerializeField] protected int damage;
+    [SerializeField] protected Sprite heldSprite;
+    [SerializeField] protected Sprite droppedSprite;
+
+    protected Animator animator;
+    protected SpriteRenderer spriteRenderer;
 
     private bool canAttack;
 
     private void Start()
     {
         canAttack = true;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponentInParent<Animator>();
     }
 
     public virtual void Attack(bool userIsPlayer)
@@ -40,11 +47,15 @@ public class Weapon : Interactable
         base.Interact();
         OnPickUp?.Invoke(this);
         GetComponent<CircleCollider2D>().enabled = false;
+        animator = GetComponentInParent<Animator>();
+        spriteRenderer.sprite = heldSprite;
     }
 
     public virtual void Drop()
     {
         GetComponent<CircleCollider2D>().enabled = true;
         wielder = null;
+        animator = null;
+        spriteRenderer.sprite = droppedSprite;
     }
 }

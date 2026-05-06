@@ -9,6 +9,7 @@ public class Melee : Weapon
     public override void Attack(bool userIsPlayer)
     {
         base.Attack(userIsPlayer);
+        Animate();
         Collider2D[] enemies = Physics2D.OverlapBoxAll(transform.root.position + (transform.root.right * swingBoxDimensions.y), swingBoxDimensions, transform.root.rotation.z, userIsPlayer ? enemyLayer : playerLayer);
         foreach (Collider2D enemy in enemies)
         {
@@ -22,6 +23,11 @@ public class Melee : Weapon
                 enemy.GetComponent<PlayerHealth>().TakeDamage(damage, direction);
             }
         }
+    }
+
+    public virtual void Animate()
+    {
+        animator.Play("Swing", 0, 0);
     }
 
     public override bool CanAttack(Transform user)

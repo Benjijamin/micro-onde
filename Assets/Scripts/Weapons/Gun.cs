@@ -23,7 +23,7 @@ public class Gun : Weapon
 
     protected virtual void Shoot(bool usedByPlayer)
     {
-
+        animator.Play("Shoot", 0, 0);
     }
 
     public override bool CanAttack(Transform user)
