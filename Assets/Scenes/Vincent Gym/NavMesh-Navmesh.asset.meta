@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Level3/NavMesh-Navmesh.asset.meta
+guid: 9208cd21f3771b24f99afd346b046666
+========
+guid: 841c14c6f2dd1dd43878d049d25371cd
+>>>>>>>> ec0bd0cc413827e5f6d1a836f5ef1043b908f252:Assets/Scenes/Vincent Gym/NavMesh-Navmesh.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 23800000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

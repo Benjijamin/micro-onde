@@ -31,6 +31,7 @@ public class WeaponHolster : MonoBehaviour
 
     public void SwapWeapon(Weapon newWeapon)
     {
+        defaultWeapon.GetComponent<SpriteRenderer>().enabled = false;
         if(currentWeapon is not DefaultWeapon)
         {
             currentWeapon.transform.SetParent(newWeapon.transform.parent);
@@ -61,6 +62,7 @@ public class WeaponHolster : MonoBehaviour
             ammoCounter.TrackWeapon(defaultWeapon, currentWeapon);
             Destroy(currentWeapon.gameObject);
             currentWeapon = defaultWeapon;
+            defaultWeapon.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 }
