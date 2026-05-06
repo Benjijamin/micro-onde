@@ -1,12 +1,16 @@
-using System.Collections.Generic;
 using NaughtyAttributes;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] protected int health;
     [SerializeField] protected List<Transform> bloodPrefabs = new List<Transform>();
     [MinMaxSlider(0, 5)][SerializeField] protected Vector2 bloodSplatDistance;
+
+    public Action onDeath;
 
     public virtual void TakeDamage(int damage, Vector3 direction)
     {
@@ -23,6 +27,6 @@ public class Health : MonoBehaviour
 
     protected virtual void Die()
     {
-
+        onDeath?.Invoke();
     }
 }

@@ -13,5 +13,7 @@ public class EnemyHealth : Health
     {
         enemy.DropWeapon();
         Destroy(enemy.gameObject);
+
+        base.Die();
     }
 }

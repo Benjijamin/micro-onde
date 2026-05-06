@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolState
   parent: {fileID: 5053506284290928530}
-  distanceThreshold: 1.5
+  distanceThreshold: 1.75
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 6355142733437445916}
   m_Layer: 7
   m_Name: Enemy Pistol
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,10 +359,10 @@ MonoBehaviour:
   agent: {fileID: 6355142733437445916}
   stateMachine: {fileID: 9149796676348758571}
   weapon: {fileID: 1235020907238763091}
-  dropRadius: 0
+  dropRadius: 1
   rayMask:
     serializedVersion: 2
-    m_Bits: 631
+    m_Bits: 8311
   sightAngle: 45
   sightRange: 5
 --- !u!114 &3986657224932576299
@@ -377,7 +377,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e398aa5ab5a9f7242a7af87545aa9c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  health: 25
+  health: 1
+  bloodPrefabs:
+  - {fileID: 7751620612912553160, guid: 405065f8fb899354b8d6abee90017f24, type: 3}
+  bloodSplatDistance: {x: 0.5, y: 1}
 --- !u!114 &9149796676348758571
 MonoBehaviour:
   m_ObjectHideFlags: 0
