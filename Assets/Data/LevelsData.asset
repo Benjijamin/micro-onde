@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2a7ff4823e9ce44857d33489a73054, type: 3}
+  m_Name: LevelsData
+  m_EditorClassIdentifier: Assembly-CSharp::LevelsData
+  Levels:
+  - Scene: Level1
+    IntroText: I can hear something...
+    IntroDuration: 3
+  - Scene: Level2
+    IntroText: 'level 2 '
+    IntroDuration: 3
+  - Scene: Level3
+    IntroText: level 3
+    IntroDuration: 3
+  - Scene: Level4
+    IntroText: level 4
+    IntroDuration: 3
+  - Scene: Level5
+    IntroText: level 5
+    IntroDuration: 3

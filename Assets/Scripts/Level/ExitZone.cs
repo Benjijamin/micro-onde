@@ -29,7 +29,7 @@ public class ExitZone : MonoBehaviour
         PlayerMovement player = collision.GetComponent<PlayerMovement>();
         if (player != null)
         {
-            GameManager.instance.NextLevel();
+            LevelLoader.instance.NextLevel();
         }
     }
 }

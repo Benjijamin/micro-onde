@@ -9,6 +9,6 @@ public class LevelButton : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener( () => GameManager.instance.LoadLevel(levelIndex));
+        button.onClick.AddListener( () => LevelLoader.instance.LoadLevel(levelIndex));
     }
 }
