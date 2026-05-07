@@ -579,8 +579,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This game contains scenes that may not be suited for all audiences. Parent
-    suppervision is advised.
+  m_text: This game contains murder, gore and exploding bodies. Parent supervision
+    is advised.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52d7c82a828ee924b913bd743286579d, type: 2}
   m_sharedMaterial: {fileID: 4656976445606304406, guid: 52d7c82a828ee924b913bd743286579d, type: 2}

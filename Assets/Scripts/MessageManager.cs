@@ -44,7 +44,7 @@ public class MessageManager : MonoBehaviour
 
     public void ShowLevelCleared(float duration) 
     {
-        ShowMessage("Level Clear", duration, levelClearedText, levelClearedAnimation);
+        ShowMessage("Level Clear \n", duration, levelClearedText, levelClearedAnimation);
     }
 
     private void ShowMessage(string message, float duration, TMP_Text text, Animation animation, bool forced = false)
