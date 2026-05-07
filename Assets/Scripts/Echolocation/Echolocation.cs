@@ -13,6 +13,10 @@ public class Echolocation : MonoBehaviour
 
     private WaveFrontDrawer drawer;
 
+    private Dictionary<int, float> pingEvents = new Dictionary<int, float>();
+
+    private int idCount = 0;
+
     public static Echolocation instance { get; private set; }
     private void Awake()
     {
@@ -55,6 +59,7 @@ public class Echolocation : MonoBehaviour
     {
         EchoWave wave = new EchoWave
         {
+            waveId = idCount++,
             Nodes = new List<EchoNode>(),
             MaxlifeTime = lifeTime
         };
@@ -75,6 +80,7 @@ public class Echolocation : MonoBehaviour
 
             EchoNode node = GetNode();
 
+            node.waveId = wave.waveId;
             node.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, 0);
             node.transform.rotation = Quaternion.Euler(0, 0, newAngle - 90);
             node.Speed = speed;
@@ -112,10 +118,24 @@ public class Echolocation : MonoBehaviour
             } 
         }
     }
+
+    public void RegisterPing(EchoNode node) 
+    {
+        if (pingEvents.ContainsKey(node.waveId)) 
+        {
+            if (Time.time - pingEvents[node.waveId] < 3f)
+            {
+                ScoreManager.Instance.ScoreMultiScan();
+            }
+        }
+
+        pingEvents[node.waveId] = Time.time;
+    }
 }
 
 public class EchoWave
 {
+    public int waveId;
     public List<EchoNode> Nodes;
     public float MaxlifeTime;
     public float CurrentlifeTime;

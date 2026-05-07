@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float lifeTime;
 
     private int damage;
-    private bool usedByPlayer;
+    public bool usedByPlayer { get; private set; }
 
     public void Init(int damage, float velocity, bool usedByPlayer)
     {

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EchoNode : MonoBehaviour
 {
+    public int waveId;
     public int MaxBounces { get; set; }
     public float Speed { get; set; }
     public int CurrentBounces { get; set; }

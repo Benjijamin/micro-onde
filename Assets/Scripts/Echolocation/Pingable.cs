@@ -24,6 +24,8 @@ public class Pingable : MonoBehaviour
         {
             Instantiate(pingEffectPrefab, transform);
             timer = 0f;
+
+            Echolocation.instance.RegisterPing(collision.transform.GetComponent<EchoNode>());
         }
     }
 }
