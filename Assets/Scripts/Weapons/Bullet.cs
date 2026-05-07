@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float lifeTime;
 
     private int damage;
+    public bool hit;
     public bool usedByPlayer { get; private set; }
 
     public void Init(int damage, float velocity, bool usedByPlayer)
@@ -31,6 +32,7 @@ public class Bullet : MonoBehaviour
         }
         if (enemy != null)
         {
+            hit = true;
             enemy.TakeDamage(damage, GetComponent<Rigidbody2D>().linearVelocity.normalized, swap, false);
             Destroy(gameObject);
         }
