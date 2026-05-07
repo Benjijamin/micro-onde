@@ -8,6 +8,9 @@ public class WeaponHolster : MonoBehaviour
     [SerializeField] private DefaultWeapon defaultWeapon;
     [SerializeField] private Transform hand;
 
+    private float lastSwap = 0f;
+    public bool HasSwappedRecently => Time.time - lastSwap < 2f;
+
     private void Start()
     {
         Weapon.OnPickUp += SwapWeapon;
@@ -32,6 +35,8 @@ public class WeaponHolster : MonoBehaviour
 
     public void SwapWeapon(Weapon newWeapon)
     {
+        lastSwap = Time.time;
+
         defaultWeapon.GetComponent<SpriteRenderer>().enabled = false;
         if(currentWeapon is not DefaultWeapon)
         {
@@ -60,6 +65,7 @@ public class WeaponHolster : MonoBehaviour
     {
         if(ammoCount == 0)
         {
+            ScoreManager.Instance.ScoreLastBullet();
             ammoCounter.TrackWeapon(defaultWeapon, currentWeapon);
             Destroy(currentWeapon.gameObject);
             currentWeapon = defaultWeapon;

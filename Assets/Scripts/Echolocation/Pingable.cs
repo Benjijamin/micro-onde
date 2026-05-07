@@ -26,6 +26,8 @@ public class Pingable : MonoBehaviour
             timer = 0f;
 
             Echolocation.instance.RegisterPing(collision.transform.GetComponent<EchoNode>());
+
+            transform.GetComponentInChildren<Enemy>().hasBeenPinged = true;
         }
     }
 }

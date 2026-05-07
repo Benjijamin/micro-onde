@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float sightAngle;
     [SerializeField] private float sightRange;
 
+    public bool hasBeenAlerted = false;
+    public bool hasBeenPinged = false;
+
     private void Start()
     {
         agent.updateUpAxis = false;
