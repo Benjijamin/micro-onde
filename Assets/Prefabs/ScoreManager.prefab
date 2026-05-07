@@ -295,7 +295,7 @@ MonoBehaviour:
   multiDisplaySpeed: 2
   messages: {fileID: 4076718444158524097}
   scoreMessagePrefab: {fileID: 7827659890684733086, guid: cf1bc169800928643880193cb77479a3, type: 3}
-  killMessagePrefab: {fileID: 0}
+  killMessagePrefab: {fileID: 8461510561952802065, guid: 48fe744aedbf6c04c8904f6de57aec4d, type: 3}
   messageDelay: 1
   killMultis: []
   bonusMultis: []

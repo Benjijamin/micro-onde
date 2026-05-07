@@ -201,7 +201,7 @@ public class ScoreManager : MonoBehaviour
 
         Score += killScore;
 
-        //ShowKillMessage("+ " + killScore + " pts", killPosition);
+        ShowKillMessage("+ " + killScore + " pts", killPosition);
     }
 
     public void ScoreDodge() 
