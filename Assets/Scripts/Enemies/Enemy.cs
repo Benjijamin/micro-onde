@@ -54,10 +54,6 @@ public class Enemy : MonoBehaviour
         RaycastHit2D[] hit = new RaycastHit2D[1];
         Physics2D.Raycast(transform.position, rayDirection, contactFilter, hit, sightRange);
         Debug.DrawRay(transform.position, rayDirection * sightRange, Color.black);
-        if (hit[0].collider != null)
-        {
-            print(hit[0].collider.name);
-        }
         if(hit[0].collider?.transform == player)
         {
             stateMachine.SetState(typeof(AlertState), false);
