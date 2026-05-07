@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float lifeTime;
 
     private int damage;
-    private bool usedByPlayer;
+    public bool usedByPlayer { get; private set; }
 
     public void Init(int damage, float velocity, bool usedByPlayer)
     {
@@ -19,8 +19,10 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Health enemy;
+        bool swap = false;
         if (usedByPlayer)
         {
+            swap = FindAnyObjectByType<WeaponHolster>().HasSwappedRecently;
             enemy = collision.gameObject.GetComponent<EnemyHealth>();
         }
         else
@@ -29,7 +31,7 @@ public class Bullet : MonoBehaviour
         }
         if (enemy != null)
         {
-            enemy.TakeDamage(damage, GetComponent<Rigidbody2D>().linearVelocity.normalized);
+            enemy.TakeDamage(damage, GetComponent<Rigidbody2D>().linearVelocity.normalized, swap, false);
             Destroy(gameObject);
         }
         else if (wallLayer == (wallLayer | (1 << collision.gameObject.layer)))

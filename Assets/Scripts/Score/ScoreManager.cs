@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
@@ -13,6 +14,19 @@ public class ScoreManager : MonoBehaviour
         public float value;
         public float timer = 0f;
         public float duration = 2f;
+    }
+
+    [Serializable]
+    private struct QueuedMessage
+    {
+        public string text;
+        public float emphasis;
+
+        public QueuedMessage(string message, float emphasis = 1f) : this()
+        {
+            this.text = message;
+            this.emphasis = emphasis;
+        }
     }
 
     [SerializeField]
@@ -43,6 +57,19 @@ public class ScoreManager : MonoBehaviour
     private float multiDisplayTarget = 1f;
     private Animation multiplierTextAnimation;
 
+    [Space]
+
+    [SerializeField]
+    private RectTransform messages;
+    [SerializeField]
+    private GameObject scoreMessagePrefab;
+    [SerializeField]
+    private GameObject killMessagePrefab;
+    [SerializeField]
+    private float messageDelay = 1f;
+    private float messageTimer;
+    private Queue<QueuedMessage> messageQueue = new Queue<QueuedMessage>();
+
     private int score;
     private int Score { get => score; set { score = value; OnUpdateScore(); } }
 
@@ -71,12 +98,14 @@ public class ScoreManager : MonoBehaviour
     private void Start() 
     {
         multiplierTextAnimation = multiText.transform.GetComponent<Animation>();
+        messageTimer = messageDelay;
     }
 
     private void Update()
     {
         TickKillMultis();
         TickBonusMultis();
+        TickMessages();
 
         UpdateScoreDisplay();
         UpdateMultiDisplay();
@@ -130,11 +159,15 @@ public class ScoreManager : MonoBehaviour
 
         ApplyKillMulti();
 
+        messageQueue.Enqueue(new QueuedMessage("KILL"));
+
         if (swappedRecently) 
         {
             baseScore += scoreMultis.gunSwapScore;
 
             ApplyBonusMulti(scoreMultis.gunSwapMultiplier, scoreMultis.gunSwapDuration);
+
+            messageQueue.Enqueue(new QueuedMessage("QUICK HANDS"));
         }
 
         if (isMelee) 
@@ -142,6 +175,8 @@ public class ScoreManager : MonoBehaviour
             baseScore += scoreMultis.meleeScore;
 
             ApplyBonusMulti(scoreMultis.meleeMultiplier, scoreMultis.meleeDuration);
+
+            messageQueue.Enqueue(new QueuedMessage("MELEE KILL!!!", 1.5f));
         }
 
         if (isStealth) 
@@ -149,6 +184,8 @@ public class ScoreManager : MonoBehaviour
             baseScore += scoreMultis.stealthKillScore;
 
             ApplyBonusMulti(scoreMultis.stealthKillMultiplier, scoreMultis.stealthKillDuration);
+
+            messageQueue.Enqueue(new QueuedMessage("STEALTHY!", 1.2f));
         }
 
         if (isBlind) 
@@ -156,14 +193,18 @@ public class ScoreManager : MonoBehaviour
             baseScore += scoreMultis.blindKillScore;
 
             ApplyBonusMulti(scoreMultis.blindKillMultiplier, scoreMultis.blindKillDuration);
+
+            messageQueue.Enqueue(new QueuedMessage("HOW?!??!!", 2f));
         }
 
         int killScore = (int)(baseScore * GetMulti());
 
         Score += killScore;
+
+        ShowKillMessage("+ " + killScore + " pts", killPosition);
     }
 
-    public void ScoreDodge(Vector3 playerPositon) 
+    public void ScoreDodge() 
     {
         RefreshBonusMultis();
 
@@ -172,9 +213,11 @@ public class ScoreManager : MonoBehaviour
         int dodgeScore = (int)(scoreMultis.dodgeScore * GetMulti()); 
 
         Score += dodgeScore;
+
+        messageQueue.Enqueue(new QueuedMessage("DODGE!"));
     }
 
-    public void ScoreMultiScan(Vector3 playerPosition)
+    public void ScoreMultiScan()
     {
         RefreshBonusMultis();
 
@@ -183,9 +226,11 @@ public class ScoreManager : MonoBehaviour
         int multiScanScore = (int)(scoreMultis.multiScanScore * GetMulti());
 
         Score += multiScanScore;
+
+        messageQueue.Enqueue(new QueuedMessage("MULTI SCAN"));
     }
 
-    public void ScoreLastBullet(Vector3 playerPosition)
+    public void ScoreLastBullet()
     {
         RefreshBonusMultis();
 
@@ -194,6 +239,8 @@ public class ScoreManager : MonoBehaviour
         int lastBulletScore = (int)(scoreMultis.lastBulletScore * GetMulti());
 
         Score += lastBulletScore;
+
+        messageQueue.Enqueue(new QueuedMessage("LAST BULLET"));
     }
 
     private void ApplyKillMulti() 
@@ -246,6 +293,20 @@ public class ScoreManager : MonoBehaviour
                     bonusMultis.RemoveAt(i);
                     OnUpdateMulti();
                 }
+            }
+        }
+    }
+
+    private void TickMessages() 
+    {
+        if (messageQueue.Count > 0) {
+
+            messageTimer += Time.deltaTime;
+            if (messageTimer > messageDelay) 
+            {
+                ShowMessage(messageQueue.Dequeue());
+
+                messageTimer = messageQueue.Count > 0 ? 0f : messageDelay;
             }
         }
     }
@@ -352,5 +413,21 @@ public class ScoreManager : MonoBehaviour
                 multiText.color = Color.white;
             }
         }
+    }
+
+    private void ShowMessage(QueuedMessage message) 
+    {
+        GameObject m = Instantiate(scoreMessagePrefab, messages);
+        ScoreMessage sm = m.GetComponent<ScoreMessage>();
+
+        sm.SetMessage(message.text, message.emphasis);
+    }
+
+    private void ShowKillMessage(string message, Vector3 killPosition) 
+    {
+        GameObject m = Instantiate(killMessagePrefab, killPosition, Quaternion.identity);
+        ScoreMessage sm = m.GetComponent<ScoreMessage>();
+
+        sm.SetMessage(message, 1f);
     }
 }

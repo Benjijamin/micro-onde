@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
 
     public Action onDeath;
 
-    public virtual void TakeDamage(int damage, Vector3 direction)
+    public virtual void TakeDamage(int damage, Vector3 direction, bool recentSwap = false, bool melee = false)
     {
         health -= damage;
 
@@ -21,11 +21,11 @@ public class Health : MonoBehaviour
 
         if (health <= 0)
         {
-            Die();
+            Die(recentSwap, melee);
         }
     }
 
-    protected virtual void Die()
+    protected virtual void Die(bool recentSwap = false, bool melee = false)
     {
         onDeath?.Invoke();
     }

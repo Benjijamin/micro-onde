@@ -11,6 +11,7 @@ public class AlertState : RootState<Enemy>
         {
             parent.GetAgent().isStopped = true;
         }
+        parent.hasBeenAlerted = true;
     }
 
     public override void StateUpdate()

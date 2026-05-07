@@ -16,7 +16,8 @@ public class Melee : Weapon
             Vector2 direction = (enemy.transform.position - wielder.position).normalized;
             if (userIsPlayer)
             {
-                enemy.GetComponent<EnemyHealth>().TakeDamage(damage, direction);
+                bool swap = wielder.GetComponent<WeaponHolster>().HasSwappedRecently;
+                enemy.GetComponent<EnemyHealth>().TakeDamage(damage, direction, swap, true);
             }
             else
             {
