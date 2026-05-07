@@ -47,11 +47,12 @@ public class LevelManager : MonoBehaviour
 
     private void OnPlayerDeath()
     {
-        GameManager.instance.ReloadLevel();
+        LevelLoader.instance.ReloadLevel();
     }
 
     private void ClearLevel()
     {
+        MessageManager.instance.ShowLevelCleared(3);
         OnLevelCleared?.Invoke();
     }
 }
