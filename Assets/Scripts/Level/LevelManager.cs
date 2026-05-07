@@ -53,6 +53,7 @@ public class LevelManager : MonoBehaviour
     private void ClearLevel()
     {
         MessageManager.instance.ShowLevelCleared(3);
+        ScoreManager.Instance.ShowEndOfLevelScore(3f);
         OnLevelCleared?.Invoke();
     }
 }

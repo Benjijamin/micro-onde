@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -61,6 +62,8 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField]
     private RectTransform messages;
+    [SerializeField]
+    private RectTransform endOfLevel;
     [SerializeField]
     private GameObject scoreMessagePrefab;
     [SerializeField]
@@ -429,5 +432,14 @@ public class ScoreManager : MonoBehaviour
         ScoreMessage sm = m.GetComponent<ScoreMessage>();
 
         sm.SetMessage(message, 1f);
+    }
+
+    public IEnumerator ShowEndOfLevelScore(float delay) 
+    {
+        yield return new WaitForSeconds(delay);
+        GameObject m = Instantiate(scoreMessagePrefab, endOfLevel);
+        ScoreMessage sm = m.GetComponent<ScoreMessage>();
+
+        sm.SetMessage(GetScore() + " pts!!!", 4f);
     }
 }
