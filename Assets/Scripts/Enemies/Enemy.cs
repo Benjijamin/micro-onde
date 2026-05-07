@@ -47,9 +47,18 @@ public class Enemy : MonoBehaviour
         Vector2 playerDirection = player.position - transform.position;
         float angle = Vector2.SignedAngle(transform.right, playerDirection);
         Vector2 rayDirection = Quaternion.Euler(0, 0, Mathf.Clamp(angle, -sightAngle / 2, sightAngle / 2)) * transform.right;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, sightRange, rayMask);
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.useTriggers = false;
+        contactFilter.useLayerMask = true;
+        contactFilter.layerMask = rayMask;
+        RaycastHit2D[] hit = new RaycastHit2D[1];
+        Physics2D.Raycast(transform.position, rayDirection, contactFilter, hit, sightRange);
         Debug.DrawRay(transform.position, rayDirection * sightRange, Color.black);
-        if(hit.collider?.transform == player)
+        if (hit[0].collider != null)
+        {
+            print(hit[0].collider.name);
+        }
+        if(hit[0].collider?.transform == player)
         {
             stateMachine.SetState(typeof(AlertState), false);
         }
