@@ -37,19 +37,31 @@ public class MessageManager : MonoBehaviour
             ShowGeneralMessage("I can hear something...", 3);
     }
 
-    public void ShowGeneralMessage(string message, float duration)
+    public void ShowGeneralMessage(string message, float duration, bool forced = false)
     {
-        if(!isShowingMessage)
-            StartCoroutine(ShowMessage(message, duration, generalMessageText, generalMessageAnimation));
+        ShowMessage(message, duration, generalMessageText, generalMessageAnimation, forced);
     }
 
     public void ShowLevelCleared(float duration) 
     {
-        if (!isShowingMessage)
-            StartCoroutine(ShowMessage("Level Clear", duration, levelClearedText, levelClearedAnimation));
+        ShowMessage("Level Clear", duration, levelClearedText, levelClearedAnimation);
     }
 
-    private IEnumerator ShowMessage(string message, float duration, TMP_Text text, Animation animation)
+    private void ShowMessage(string message, float duration, TMP_Text text, Animation animation, bool forced = false)
+    {
+        if (forced)
+        {
+            isShowingMessage = false;
+            levelClearedText.gameObject.SetActive(false);
+            generalMessageText.gameObject.SetActive(false);
+            StopAllCoroutines();
+        }
+
+        if (!isShowingMessage)
+            StartCoroutine(ShowMessageCoroutine(message, duration, text, animation));
+    }
+
+    private IEnumerator ShowMessageCoroutine(string message, float duration, TMP_Text text, Animation animation)
     {
         isShowingMessage = true;
         text.gameObject.SetActive(true);

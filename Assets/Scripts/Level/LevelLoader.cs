@@ -85,7 +85,7 @@ public class LevelLoader : MonoBehaviour
 
     private IEnumerator FadeOutLevelStart(float duration)
     {
-        MessageManager.instance.ShowGeneralMessage(levelsData.Levels[currentIndex].IntroText, levelsData.Levels[currentIndex].IntroDuration);
+        MessageManager.instance.ShowGeneralMessage(levelsData.Levels[currentIndex].IntroText, levelsData.Levels[currentIndex].IntroDuration, true);
 
         yield return new WaitForSeconds(duration - fadeOut.length);
 
