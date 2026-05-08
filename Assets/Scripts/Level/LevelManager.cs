@@ -58,6 +58,7 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(respawnDelay);
         LevelLoader.instance.ReloadLevel();
+        ScoreManager.Instance.RevertScore();
     }
 
     private void ClearLevel()
@@ -65,5 +66,6 @@ public class LevelManager : MonoBehaviour
         MessageManager.instance.ShowLevelCleared(3);
         StartCoroutine(ScoreManager.Instance.ShowEndOfLevelScore(3f));
         OnLevelCleared?.Invoke();
+        ScoreManager.Instance.RecordScore();
     }
 }
