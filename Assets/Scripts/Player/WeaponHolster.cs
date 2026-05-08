@@ -17,6 +17,11 @@ public class WeaponHolster : MonoBehaviour
         defaultWeapon.wielder = transform;
     }
 
+    private void OnDestroy()
+    {
+        Weapon.OnPickUp -= SwapWeapon;
+    }
+
     private void Update()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
