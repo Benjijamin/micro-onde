@@ -111,7 +111,7 @@ public class Enemy : MonoBehaviour
         float vel= 0;
         while (revealLight.pointLightOuterRadius < 1)
         {
-            revealLight.pointLightOuterRadius = Mathf.SmoothDamp(revealLight.pointLightOuterRadius, 1, ref vel, 1);
+            revealLight.pointLightOuterRadius = Mathf.SmoothDamp(revealLight.pointLightOuterRadius, 1, ref vel, .5f);
 
             yield return null;
         }
@@ -120,12 +120,13 @@ public class Enemy : MonoBehaviour
     private IEnumerator HideCoroutine()
     {
         float vel = 0;
-        while (revealLight.pointLightOuterRadius > 0)
+        while (revealLight.pointLightOuterRadius > 0.05f)
         {
-            revealLight.pointLightOuterRadius = Mathf.SmoothDamp(revealLight.pointLightOuterRadius, 0, ref vel, 1);
+            revealLight.pointLightOuterRadius = Mathf.SmoothDamp(revealLight.pointLightOuterRadius, 0, ref vel, .5f);
 
             yield return null;
         }
+        revealLight.pointLightOuterRadius = 0;
     }
 
 }
