@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Pingable : MonoBehaviour
@@ -7,6 +8,8 @@ public class Pingable : MonoBehaviour
     [SerializeField]
     private float cooldown = 2f;
     private float timer;
+
+    public Action OnPigned;
 
     private void Start() 
     {
@@ -27,7 +30,7 @@ public class Pingable : MonoBehaviour
 
             Echolocation.instance.RegisterPing(collision.transform.GetComponent<EchoNode>());
 
-            transform.GetComponentInChildren<Enemy>().hasBeenPinged = true;
+            OnPigned?.Invoke();
         }
     }
 }
