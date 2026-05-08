@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering.Universal;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,8 +13,22 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float sightAngle;
     [SerializeField] private float sightRange;
 
+ 
+    [SerializeField] private Light2D revealLight;
+    [SerializeField] private float revealDuration;
+
+    private float revealTimer;
+    private bool isRevealed;
+    private Pingable pingable;
+
     public bool hasBeenAlerted = false;
     public bool hasBeenPinged = false;
+
+    private void Awake()
+    {
+        pingable = GetComponent<Pingable>();
+        pingable.OnPigned += Reveal;
+    }
 
     private void Start()
     {
@@ -62,5 +78,54 @@ public class Enemy : MonoBehaviour
         {
             stateMachine.SetState(typeof(PatrolState), false);
         }
+
+        if (revealTimer > 0)
+        {
+            revealTimer -= Time.deltaTime;
+        }
+        else if (isRevealed)
+        {
+            isRevealed = false;
+            StopAllCoroutines();
+            StartCoroutine(HideCoroutine());
+        }
     }
+
+    private void Reveal()
+    {
+        hasBeenPinged = true;
+
+        if (!isRevealed)
+        {
+            isRevealed = true;
+
+            StopAllCoroutines();
+            StartCoroutine(RevealCoroutine());
+        }
+        
+        revealTimer = revealDuration;
+    }
+
+    private IEnumerator RevealCoroutine()
+    {
+        float vel= 0;
+        while (revealLight.pointLightOuterRadius < 1)
+        {
+            revealLight.pointLightOuterRadius = Mathf.SmoothDamp(revealLight.pointLightOuterRadius, 1, ref vel, 1);
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator HideCoroutine()
+    {
+        float vel = 0;
+        while (revealLight.pointLightOuterRadius > 0)
+        {
+            revealLight.pointLightOuterRadius = Mathf.SmoothDamp(revealLight.pointLightOuterRadius, 0, ref vel, 1);
+
+            yield return null;
+        }
+    }
+
 }

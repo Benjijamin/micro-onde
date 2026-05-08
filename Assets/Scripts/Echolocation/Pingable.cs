@@ -25,7 +25,8 @@ public class Pingable : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Echo") && timer > cooldown)
         {
-            Instantiate(pingEffectPrefab, transform);
+            if(pingEffectPrefab != null)
+                Instantiate(pingEffectPrefab, transform);
             timer = 0f;
 
             Echolocation.instance.RegisterPing(collision.transform.GetComponent<EchoNode>());
