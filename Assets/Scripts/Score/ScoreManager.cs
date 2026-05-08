@@ -75,6 +75,7 @@ public class ScoreManager : MonoBehaviour
 
     private int score;
     private int Score { get => score; set { score = value; OnUpdateScore(); } }
+    private int recordedScore = 0;
 
     [Header("Testing")]
 
@@ -364,6 +365,16 @@ public class ScoreManager : MonoBehaviour
     {
         bonusMultis.Clear();
         OnUpdateMulti();
+    }
+
+    public void RecordScore() 
+    {
+        recordedScore = Score;
+    }
+
+    public void RevertScore() 
+    {
+        Score = recordedScore;
     }
 
     private void ResetScore() 
