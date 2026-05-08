@@ -442,4 +442,12 @@ public class ScoreManager : MonoBehaviour
 
         sm.SetMessage(GetScore() + " pts!!!", 4f);
     }
+
+    public void ShowSuicideMessage()
+    {
+        GameObject m = Instantiate(scoreMessagePrefab, endOfLevel);
+        ScoreMessage sm = m.GetComponent<ScoreMessage>();
+
+        sm.SetMessage("Suicide!", 4f);
+    }
 }

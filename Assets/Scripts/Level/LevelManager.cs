@@ -1,9 +1,12 @@
 using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private float respawnDelay;
+
     private GameObject[] enemies;
     private int enemyCount;
     private int killCount;
@@ -33,7 +36,7 @@ public class LevelManager : MonoBehaviour
                 enemies[i].GetComponent<Health>().onDeath += OnEnemyDeath;
             }
 
-            player.GetComponent<Health>().onDeath += OnPlayerDeath;
+            player.GetComponent<PlayerHealth>().OnPlayerDeath += OnPlayerDeath;
         }
     }
 
@@ -45,8 +48,15 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    private void OnPlayerDeath()
+    private void OnPlayerDeath(bool isSuicide)
     {
+        player.GetComponent<PlayerMovement>().enabled = false;
+        StartCoroutine(RestartLevel(isSuicide));
+    }
+
+    private IEnumerator RestartLevel(bool isSuicide)
+    {
+        yield return new WaitForSeconds(respawnDelay);
         LevelLoader.instance.ReloadLevel();
     }
 

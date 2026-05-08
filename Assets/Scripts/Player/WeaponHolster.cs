@@ -19,9 +19,9 @@ public class WeaponHolster : MonoBehaviour
 
     private void Update()
     {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (currentWeapon is Gun)
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = (Vector2)mousePos - (Vector2)currentWeapon.transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             currentWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -30,6 +30,10 @@ public class WeaponHolster : MonoBehaviour
         {
             currentWeapon.Attack(true);
             CameraManager.instance.Shake(0.05f, 0.05f);
+            if(currentWeapon is Gun && ((Vector2)mousePos - (Vector2)transform.position).magnitude < GetComponent<CircleCollider2D>().radius)
+            {
+                GetComponent<PlayerHealth>().Suicide();
+            }
         }
     }
 

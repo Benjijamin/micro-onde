@@ -405,6 +405,7 @@ MonoBehaviour:
   health: 1
   bloodPrefabs:
   - {fileID: 7751620612912553160, guid: 405065f8fb899354b8d6abee90017f24, type: 3}
+  bloodDeathPrefab: {fileID: 1098993732762065873, guid: af7aabf683d3d0744bbfe3b8dacdcbfd, type: 3}
   bloodSplatDistance: {x: 0.5, y: 1}
 --- !u!114 &9149796676348758571
 MonoBehaviour:
