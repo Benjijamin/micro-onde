@@ -377,11 +377,12 @@ public class ScoreManager : MonoBehaviour
         Score = recordedScore;
     }
 
-    private void ResetScore() 
+    public void ResetScore() 
     {
         ResetKillMultis();
         ResetBonusMultis();
         Score = 0;
+        recordedScore = 0;
     }
 
     private void UpdateScoreDisplay() 
