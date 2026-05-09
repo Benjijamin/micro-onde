@@ -295,10 +295,11 @@ MonoBehaviour:
   multiText: {fileID: 8729792660314118029}
   multiDisplaySpeed: 2
   messages: {fileID: 4076718444158524097}
-  endOfLevel: {fileID: 2029631069241182396}
+  middleOfScreen: {fileID: 2029631069241182396}
   scoreMessagePrefab: {fileID: 7827659890684733086, guid: cf1bc169800928643880193cb77479a3, type: 3}
   killMessagePrefab: {fileID: 8461510561952802065, guid: 48fe744aedbf6c04c8904f6de57aec4d, type: 3}
   messageDelay: 1
+  maxScoreDuration: 90
   killMultis: []
   bonusMultis: []
 --- !u!1 &4073324061523466323
@@ -311,7 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2029631069241182396}
   m_Layer: 5
-  m_Name: EndOfLevel
+  m_Name: MiddleOfScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

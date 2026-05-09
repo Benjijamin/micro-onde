@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -63,7 +64,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private RectTransform messages;
     [SerializeField]
-    private RectTransform endOfLevel;
+    private RectTransform middleOfScreen;
     [SerializeField]
     private GameObject scoreMessagePrefab;
     [SerializeField]
@@ -76,6 +77,11 @@ public class ScoreManager : MonoBehaviour
     private int score;
     private int Score { get => score; set { score = value; OnUpdateScore(); } }
     private int recordedScore = 0;
+
+    private float scoreTimer = 0f;
+    [SerializeField]
+    private float maxScoreDuration = 120f;
+    private bool noMorePoints = false;
 
     [Header("Testing")]
 
@@ -96,6 +102,17 @@ public class ScoreManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            SceneManager.sceneLoaded += OnSceneLoad;
+        }
+    }
+
+    private void OnSceneLoad(Scene scene, LoadSceneMode sceneMode)
+    {
+        if (scene.name != "MainMenu") 
+        {
+            scoreTimer = 0f;
+            noMorePoints = false;
         }
     }
 
@@ -110,6 +127,7 @@ public class ScoreManager : MonoBehaviour
         TickKillMultis();
         TickBonusMultis();
         TickMessages();
+        TickScoreTimer();
 
         UpdateScoreDisplay();
         UpdateMultiDisplay();
@@ -152,99 +170,111 @@ public class ScoreManager : MonoBehaviour
 
     public void ScoreKill(bool swappedRecently, bool isMelee, bool isStealth, bool isBlind, Vector3 killPosition) 
     {
-        int baseScore = scoreMultis.killScore;
-
-        if (swappedRecently || isMelee || isStealth || isBlind)
+        if (!noMorePoints) 
         {
-            RefreshBonusMultis();
+            int baseScore = scoreMultis.killScore;
+
+            if (swappedRecently || isMelee || isStealth || isBlind)
+            {
+                RefreshBonusMultis();
+            }
+
+            RefreshKillMultis();
+
+            ApplyKillMulti();
+
+            messageQueue.Enqueue(new QueuedMessage("KILL"));
+
+            if (swappedRecently)
+            {
+                baseScore += scoreMultis.gunSwapScore;
+
+                ApplyBonusMulti(scoreMultis.gunSwapMultiplier, scoreMultis.gunSwapDuration);
+
+                messageQueue.Enqueue(new QueuedMessage("QUICK HANDS"));
+            }
+
+            if (isMelee)
+            {
+                baseScore += scoreMultis.meleeScore;
+
+                ApplyBonusMulti(scoreMultis.meleeMultiplier, scoreMultis.meleeDuration);
+
+                messageQueue.Enqueue(new QueuedMessage("MELEE KILL!!!", 1.5f));
+            }
+
+            if (isStealth)
+            {
+                baseScore += scoreMultis.stealthKillScore;
+
+                ApplyBonusMulti(scoreMultis.stealthKillMultiplier, scoreMultis.stealthKillDuration);
+
+                messageQueue.Enqueue(new QueuedMessage("STEALTHY!", 1.2f));
+            }
+
+            if (isBlind)
+            {
+                baseScore += scoreMultis.blindKillScore;
+
+                ApplyBonusMulti(scoreMultis.blindKillMultiplier, scoreMultis.blindKillDuration);
+
+                messageQueue.Enqueue(new QueuedMessage("HOW?!??!!", 2f));
+            }
+
+            int killScore = (int)(baseScore * GetMulti());
+
+            Score += killScore;
+
+            ShowKillMessage("+ " + killScore + " pts", killPosition);
         }
-
-        RefreshKillMultis();
-
-        ApplyKillMulti();
-
-        messageQueue.Enqueue(new QueuedMessage("KILL"));
-
-        if (swappedRecently) 
-        {
-            baseScore += scoreMultis.gunSwapScore;
-
-            ApplyBonusMulti(scoreMultis.gunSwapMultiplier, scoreMultis.gunSwapDuration);
-
-            messageQueue.Enqueue(new QueuedMessage("QUICK HANDS"));
-        }
-
-        if (isMelee) 
-        {
-            baseScore += scoreMultis.meleeScore;
-
-            ApplyBonusMulti(scoreMultis.meleeMultiplier, scoreMultis.meleeDuration);
-
-            messageQueue.Enqueue(new QueuedMessage("MELEE KILL!!!", 1.5f));
-        }
-
-        if (isStealth) 
-        {
-            baseScore += scoreMultis.stealthKillScore;
-
-            ApplyBonusMulti(scoreMultis.stealthKillMultiplier, scoreMultis.stealthKillDuration);
-
-            messageQueue.Enqueue(new QueuedMessage("STEALTHY!", 1.2f));
-        }
-
-        if (isBlind) 
-        {
-            baseScore += scoreMultis.blindKillScore;
-
-            ApplyBonusMulti(scoreMultis.blindKillMultiplier, scoreMultis.blindKillDuration);
-
-            messageQueue.Enqueue(new QueuedMessage("HOW?!??!!", 2f));
-        }
-
-        int killScore = (int)(baseScore * GetMulti());
-
-        Score += killScore;
-
-        ShowKillMessage("+ " + killScore + " pts", killPosition);
     }
 
-    public void ScoreDodge() 
+    public void ScoreDodge()
     {
-        RefreshBonusMultis();
+        if (!noMorePoints)
+        {
+            RefreshBonusMultis();
 
-        ApplyBonusMulti(scoreMultis.dodgeMultiplier, scoreMultis.dodgeDuration);
+            ApplyBonusMulti(scoreMultis.dodgeMultiplier, scoreMultis.dodgeDuration);
 
-        int dodgeScore = (int)(scoreMultis.dodgeScore * GetMulti()); 
+            int dodgeScore = (int)(scoreMultis.dodgeScore * GetMulti());
 
-        Score += dodgeScore;
+            Score += dodgeScore;
 
-        messageQueue.Enqueue(new QueuedMessage("DODGE!"));
+            messageQueue.Enqueue(new QueuedMessage("DODGE!"));
+        }
     }
 
     public void ScoreMultiScan()
     {
-        RefreshBonusMultis();
+        if (!noMorePoints)
+        {
+            RefreshBonusMultis();
 
-        ApplyBonusMulti(scoreMultis.multiScanMultiplier, scoreMultis.multiScanDuration);
+            ApplyBonusMulti(scoreMultis.multiScanMultiplier, scoreMultis.multiScanDuration);
 
-        int multiScanScore = (int)(scoreMultis.multiScanScore * GetMulti());
+            int multiScanScore = (int)(scoreMultis.multiScanScore * GetMulti());
 
-        Score += multiScanScore;
+            Score += multiScanScore;
 
-        messageQueue.Enqueue(new QueuedMessage("MULTI SCAN"));
+            messageQueue.Enqueue(new QueuedMessage("MULTI SCAN"));
+        }
     }
 
     public void ScoreLastBullet()
     {
-        RefreshBonusMultis();
+        if (noMorePoints)
+        {
+            RefreshBonusMultis();
 
-        ApplyBonusMulti(scoreMultis.lastBulletMultiplier, scoreMultis.lastBulletDuration);
+            ApplyBonusMulti(scoreMultis.lastBulletMultiplier, scoreMultis.lastBulletDuration);
 
-        int lastBulletScore = (int)(scoreMultis.lastBulletScore * GetMulti());
+            int lastBulletScore = (int)(scoreMultis.lastBulletScore * GetMulti());
 
-        Score += lastBulletScore;
+            Score += lastBulletScore;
 
-        messageQueue.Enqueue(new QueuedMessage("LAST BULLET"));
+            messageQueue.Enqueue(new QueuedMessage("LAST BULLET"));
+        }
     }
 
     private void ApplyKillMulti() 
@@ -312,6 +342,17 @@ public class ScoreManager : MonoBehaviour
 
                 messageTimer = messageQueue.Count > 0 ? 0f : messageDelay;
             }
+        }
+    }
+
+    private void TickScoreTimer() 
+    {
+        scoreTimer += Time.deltaTime;
+        if (scoreTimer > maxScoreDuration && !noMorePoints)
+        {
+            ShowInsultMessage("Get a move on loser!!!", 0f);
+            ShowInsultMessage("No more point for you...", 1.5f);
+            noMorePoints = true;
         }
     }
 
@@ -446,20 +487,27 @@ public class ScoreManager : MonoBehaviour
         sm.SetMessage(message, 1f);
     }
 
-    public IEnumerator ShowEndOfLevelScore(float delay) 
+    private IEnumerator ShowMiddleMessage(string message, float delay, float emphasis = 1f) 
     {
         yield return new WaitForSeconds(delay);
-        GameObject m = Instantiate(scoreMessagePrefab, endOfLevel);
+        GameObject m = Instantiate(scoreMessagePrefab, middleOfScreen);
         ScoreMessage sm = m.GetComponent<ScoreMessage>();
 
-        sm.SetMessage(GetScore() + " pts!!!", 4f);
+        sm.SetMessage(message, emphasis);
     }
 
-    public void ShowSuicideMessage()
+    public void ShowEndOfLevelScore(float delay = 0f) 
     {
-        GameObject m = Instantiate(scoreMessagePrefab, endOfLevel);
-        ScoreMessage sm = m.GetComponent<ScoreMessage>();
+        StartCoroutine(ShowMiddleMessage(GetScore() + " pts!!!", delay, 4f));
+    }
 
-        sm.SetMessage("Suicide!", 4f);
+    public void ShowSuicideMessage(float delay = 0f)
+    {
+        StartCoroutine(ShowMiddleMessage("Suicide!", delay, 4f));
+    }
+
+    public void ShowInsultMessage(string message, float delay = 0f) 
+    {
+        StartCoroutine(ShowMiddleMessage(message, delay, 3f));
     }
 }
