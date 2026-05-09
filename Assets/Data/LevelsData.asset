@@ -16,7 +16,7 @@ MonoBehaviour:
   - Scene: Level1
     IntroText: I can hear something...
     IntroDuration: 3
-  - Scene: Level1
+  - Scene: Level2
     IntroText: 'level 2 '
     IntroDuration: 3
   - Scene: Level1
