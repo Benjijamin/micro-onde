@@ -79,8 +79,14 @@ public class LevelLoader : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(scene.name != "MainMenu")
-            StartCoroutine(FadeOutLevelStart(fadeOutTime));
+        if (scene.name != "MainMenu")
+        { 
+            StartCoroutine(FadeOutLevelStart(fadeOutTime)); 
+        }
+        else 
+        {
+            ScoreManager.Instance.ResetScore();
+        }
     }
 
     private IEnumerator FadeOutLevelStart(float duration)
