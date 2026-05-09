@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -14,6 +15,11 @@ public class LevelManager : MonoBehaviour
     private GameObject player;
 
     public Action OnLevelCleared;
+
+    [Foldout("Audio")]
+    [SerializeField] private AudioClip inGameTheme;
+
+    private AudioPlayer inGameThemePlayer;
 
     public static LevelManager instance { get; private set; }
 
@@ -38,6 +44,12 @@ public class LevelManager : MonoBehaviour
 
             player.GetComponent<PlayerHealth>().OnPlayerDeath += OnPlayerDeath;
         }
+    }
+
+    private void Start()
+    {
+        inGameThemePlayer = AudioManager.instance.Play(inGameTheme, AudioManager.instance.musicVolume, true);
+        inGameThemePlayer.FadeIn(AudioManager.instance.musicVolume, 0.5f);
     }
 
     private void OnEnemyDeath()
@@ -67,5 +79,10 @@ public class LevelManager : MonoBehaviour
         ScoreManager.Instance.ShowEndOfLevelScore(3f);
         OnLevelCleared?.Invoke();
         ScoreManager.Instance.RecordScore();
+    }
+
+    private void OnDestroy()
+    {
+        inGameThemePlayer.FadeOut(0.5f);
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +12,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject startMenu;
     [SerializeField] private GameObject levelSelectionMenu;
     [SerializeField] private GameObject OptionsMenu;
-    [SerializeField] private CanvasGroup warningScreen;
-    [SerializeField] private float warningDuration;
-    [SerializeField] private float warningFadeOutTime;
+
+    [Foldout("Audio")]
+    [SerializeField] private AudioClip menuMusic;
+    [Foldout("Audio")]
+    [SerializeField] private AudioClip clickSound;
+
+    private AudioPlayer menuMusicPlayer;
 
     public static MainMenu instance { get; private set; }
     private void Awake()
@@ -32,20 +37,19 @@ public class MainMenu : MonoBehaviour
     {
         levelSelectionButton.onClick.AddListener(GoToLevelSelection);
         quitButton.onClick.AddListener(Application.Quit);
-        StartCoroutine(FadeOutWarning());
+
+        Button[] buttons = GetComponentsInChildren<Button>(true);
+        foreach (Button button in buttons)
+        {
+            button.onClick.AddListener(OnButtonClick);
+        }
+
+        menuMusicPlayer = AudioManager.instance.Play(menuMusic, AudioManager.instance.musicVolume, true);
     }
 
-    private IEnumerator FadeOutWarning()
+    private void OnButtonClick()
     {
-        yield return new WaitForSeconds(warningDuration);
-        float t = 0;
-        while (warningScreen.alpha > 0)
-        {
-            yield return null;
-            t += Time.deltaTime;
-            warningScreen.alpha = Mathf.Lerp(1, 0, t / warningFadeOutTime);
-        }
-        warningScreen.gameObject.SetActive(false);
+        AudioManager.instance.Play(clickSound, AudioManager.instance.SFXVolume, false);
     }
 
     public void GoToLevelSelection()
@@ -62,5 +66,10 @@ public class MainMenu : MonoBehaviour
         //OptionsMenu.SetActive(false);
 
         startMenu.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        menuMusicPlayer.FadeOut(0.5f);
     }
 }

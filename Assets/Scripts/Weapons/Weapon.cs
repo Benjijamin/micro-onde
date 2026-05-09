@@ -58,4 +58,9 @@ public class Weapon : Interactable
         animator = null;
         spriteRenderer.sprite = droppedSprite;
     }
+
+    public float GetAttackCooldown()
+    {
+        return attackCooldown;
+    }
 }

@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class WeaponHolster : MonoBehaviour
 {
+    public static Action<float> OnPlayerInitiatedAttack;
+
     [SerializeField] private AmmoCounter ammoCounter;
 
     [SerializeField] private Weapon currentWeapon;
@@ -34,6 +37,7 @@ public class WeaponHolster : MonoBehaviour
         if (currentWeapon.CanAttack(transform) && Input.GetKey(KeyCode.Mouse0))
         {
             currentWeapon.Attack(true);
+            OnPlayerInitiatedAttack?.Invoke(currentWeapon.GetAttackCooldown());
             CameraManager.instance.Shake(0.05f, 0.05f);
             if(currentWeapon is Gun && ((Vector2)mousePos - (Vector2)transform.position).magnitude < GetComponent<CircleCollider2D>().radius)
             {

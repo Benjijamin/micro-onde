@@ -17,9 +17,11 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private float fadeInTime;
     [SerializeField] private float fadeOutTime;
 
-
-
     private int currentIndex;
+
+    [Foldout("Audio")][SerializeField] private AudioClip inGameTheme;
+
+    private AudioPlayer inGameAudioPlayer;
 
     public static LevelLoader instance { get; private set; }
 
@@ -44,7 +46,10 @@ public class LevelLoader : MonoBehaviour
     public void NextLevel()
     {
         if (currentIndex + 1 >= levelsData.Levels.Count)
+        {
+            inGameAudioPlayer.FadeOut(0.5f, () => { inGameAudioPlayer.Abort(); inGameAudioPlayer = null; });
             SceneManager.LoadScene(mainMenu);
+        }
         else
             LoadLevel(currentIndex + 1);
     }
@@ -81,7 +86,11 @@ public class LevelLoader : MonoBehaviour
     {
         if (scene.name != "MainMenu")
         { 
-            StartCoroutine(FadeOutLevelStart(fadeOutTime)); 
+            StartCoroutine(FadeOutLevelStart(fadeOutTime));
+            if (inGameAudioPlayer == null)
+            {
+                inGameAudioPlayer = AudioManager.instance.Play(inGameTheme, AudioManager.instance.musicVolume, true);
+            }
         }
         else 
         {
