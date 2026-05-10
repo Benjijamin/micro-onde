@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
 
     public void Explode() 
     {
-        Gibs g = GetComponent<Gibs>();
+        Gibs g = GetComponentInChildren<Gibs>();
         if (g != null) 
         {
             g.Explode();
