@@ -18,6 +18,7 @@ public class WeaponHolster : MonoBehaviour
     {
         Weapon.OnPickUp += SwapWeapon;
         defaultWeapon.wielder = transform;
+        GetComponent<CharacterAnimationController>().SetAnimation(CharacterAnim.PoseHands);
     }
 
     private void OnDestroy()
@@ -51,7 +52,6 @@ public class WeaponHolster : MonoBehaviour
     {
         lastSwap = Time.time;
 
-        defaultWeapon.GetComponent<SpriteRenderer>().enabled = false;
         if(currentWeapon is not DefaultWeapon)
         {
             currentWeapon.transform.SetParent(newWeapon.transform.parent);
@@ -83,7 +83,7 @@ public class WeaponHolster : MonoBehaviour
             ammoCounter.TrackWeapon(defaultWeapon, currentWeapon);
             Destroy(currentWeapon.gameObject);
             currentWeapon = defaultWeapon;
-            defaultWeapon.GetComponent<SpriteRenderer>().enabled = true;
+            defaultWeapon.OnSwapDefault();
         }
     }
 }

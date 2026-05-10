@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Diagnostics;
 using NaughtyAttributes;
+using Spine.Unity;
 using UnityEngine;
 
 public class Weapon : Interactable
@@ -14,6 +15,7 @@ public class Weapon : Interactable
     [SerializeField] protected int damage;
     [SerializeField] protected Sprite heldSprite;
     [SerializeField] protected Sprite droppedSprite;
+    [SerializeField] protected CharacterAnim characterPose;
 
     protected Animator animator;
     protected SpriteRenderer spriteRenderer;
@@ -56,7 +58,9 @@ public class Weapon : Interactable
         GetComponent<CircleCollider2D>().enabled = false;
         animator = GetComponentInParent<Animator>();
         spriteRenderer.sprite = heldSprite;
+        spriteRenderer.sortingOrder = 2;
 
+        wielder.GetComponent<CharacterAnimationController>().SetAnimation(characterPose);
         AudioManager.instance.Play(readySound, AudioManager.instance.SFXVolume, false, false, transform.position);
     }
 
@@ -66,6 +70,7 @@ public class Weapon : Interactable
         wielder = null;
         animator = null;
         spriteRenderer.sprite = droppedSprite;
+        spriteRenderer.sortingOrder = 0;
     }
 
     public float GetAttackCooldown()

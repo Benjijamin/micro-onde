@@ -179,6 +179,7 @@ MonoBehaviour:
   damage: 7
   heldSprite: {fileID: 21300000, guid: 2e99976d6aff79542ad749ab099d2db4, type: 3}
   droppedSprite: {fileID: 21300000, guid: 020a8d8282c6cea41959346935a5dfa6, type: 3}
+  characterPose: 3
   attackSound: {fileID: 8300000, guid: fecc05d759a7caf40a7a4d3cbc6ae321, type: 3}
   readySound: {fileID: 8300000, guid: 1b7b3c54536b837468d8702ea7862d8e, type: 3}
   bulletprefab: {fileID: 4855521546068348494, guid: 4b670e6b37d0f3a42b8dc5d738fabcbd, type: 3}

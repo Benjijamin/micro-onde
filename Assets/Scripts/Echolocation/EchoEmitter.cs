@@ -18,7 +18,7 @@ public class EchoEmitter : MonoBehaviour
     private IEnumerator EmitWaves(int count, float interval)
     {
         timer = cooldown;
-        Vector3 dirSnapshot = transform.right;
+        Vector3 dirSnapshot = -transform.up;
 
         for (int i = 0; i < count; i++)
         {

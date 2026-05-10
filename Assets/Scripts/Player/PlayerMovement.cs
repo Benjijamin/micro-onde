@@ -1,3 +1,4 @@
+using Spine.Unity;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
 
     private Rigidbody2D rb;
+    private CharacterAnimationController animController;
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GetComponent<PlayerHealth>().onDeath += OnDeath;
+        animController = GetComponent<CharacterAnimationController>();
     }
 
     private void OnDeath()
@@ -48,6 +51,16 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.S)) { moveDir += Vector2.down; }
         if (Input.GetKey(KeyCode.D)) { moveDir += Vector2.right; }
         rb.linearVelocity = moveDir.normalized * speed;
+
+        bool isWalking = animController.IsAnimPlaying(CharacterAnim.Walk);
+        if (isWalking && moveDir == Vector2.zero)
+        {
+            animController.CancelAnimation(CharacterAnim.Walk);
+        }
+        else if (!isWalking && moveDir != Vector2.zero)
+        {
+            animController.SetAnimation(CharacterAnim.Walk);
+        }
     }
 
     private void Look()
@@ -55,6 +68,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (Vector2)mousePos - (Vector2)transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        transform.rotation = Quaternion.Euler(0, 0, 90 + angle);
     }
 }
