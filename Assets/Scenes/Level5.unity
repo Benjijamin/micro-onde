@@ -1995,6 +1995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   respawnDelay: 1
+  inGameTheme: {fileID: 0}
 --- !u!4 &1132679711
 Transform:
   m_ObjectHideFlags: 0

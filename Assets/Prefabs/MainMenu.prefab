@@ -1065,6 +1065,8 @@ MonoBehaviour:
   startMenu: {fileID: 5334125635299258556}
   levelSelectionMenu: {fileID: 59897263773822539}
   OptionsMenu: {fileID: 0}
+  menuMusic: {fileID: 0}
+  clickSound: {fileID: 0}
 --- !u!1 &2646291172909595462
 GameObject:
   m_ObjectHideFlags: 0

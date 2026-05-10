@@ -1047,6 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beadef4d9186a1f4abc2a6338c28aae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  inputLocked: 0
   speed: 5
 --- !u!212 &951715929
 SpriteRenderer:
@@ -1231,7 +1232,9 @@ MonoBehaviour:
   health: 25
   bloodPrefabs:
   - {fileID: 7751620612912553160, guid: 405065f8fb899354b8d6abee90017f24, type: 3}
+  bloodDeathPrefab: {fileID: 0}
   bloodSplatDistance: {x: 0.5, y: 1}
+  deathSounds: []
 --- !u!114 &951715936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,6 +1248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EchoEmitter
   settings: {fileID: 11400000, guid: a87e9ee8fdf437543bc35241c82b9d26, type: 2}
+  cooldown: 0
 --- !u!1 &1010686920
 GameObject:
   m_ObjectHideFlags: 0

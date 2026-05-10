@@ -2,7 +2,7 @@
  * Spine Runtimes License Agreement
  * Last updated April 5, 2025. Replaces all prior versions.
  *
- * Copyright (c) 2013-2025, Esoteric Software LLC
+ * Copyright (c) 2013-2026, Esoteric Software LLC
  *
  * Integration of the Spine Runtimes into software or otherwise creating
  * derivative works of the Spine Runtimes is permitted under the terms and
@@ -134,6 +134,12 @@ namespace Spine {
 		static public float Clamp (float value, float min, float max) {
 			if (value < min) return min;
 			if (value > max) return max;
+			return value;
+		}
+
+		static public float Clamp01 (float value) {
+			if (value < 0) return 0;
+			if (value > 1) return 1;
 			return value;
 		}
 

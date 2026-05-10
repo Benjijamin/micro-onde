@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private LayerMask rayMask;
     [SerializeField] private float sightAngle;
     [SerializeField] private float sightRange;
-
  
     [SerializeField] private Light2D revealLight;
     [SerializeField] private float revealDuration;
@@ -20,6 +19,7 @@ public class Enemy : MonoBehaviour
     private float revealTimer;
     private bool isRevealed;
     private Pingable pingable;
+    private CharacterAnimationController characterAnimationController;
 
     public bool hasBeenAlerted = false;
     public bool hasBeenPinged = false;
@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
     {
         pingable = GetComponent<Pingable>();
         pingable.OnPigned += Reveal;
+        characterAnimationController = GetComponent<CharacterAnimationController>();
     }
 
     private void Start()
@@ -59,7 +60,7 @@ public class Enemy : MonoBehaviour
 
     public void Explode() 
     {
-        Gibs g = GetComponent<Gibs>();
+        Gibs g = GetComponentInChildren<Gibs>();
         if (g != null) 
         {
             g.Explode();
@@ -137,4 +138,8 @@ public class Enemy : MonoBehaviour
         revealLight.pointLightOuterRadius = 0;
     }
 
+    public CharacterAnimationController GetAnimController()
+    {
+        return characterAnimationController;
+    }
 }

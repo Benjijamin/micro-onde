@@ -53,6 +53,7 @@ MonoBehaviour:
   fadeOut: {fileID: 7400000, guid: f5c7dfd79c6223a47af862dede12f443, type: 2}
   fadeInTime: 2
   fadeOutTime: 2
+  inGameTheme: {fileID: 0}
 --- !u!1 &6064008191750687920
 GameObject:
   m_ObjectHideFlags: 0
