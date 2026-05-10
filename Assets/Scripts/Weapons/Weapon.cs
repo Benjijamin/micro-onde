@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Diagnostics;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class Weapon : Interactable
@@ -18,6 +20,11 @@ public class Weapon : Interactable
 
     private bool canAttack;
 
+    [Foldout("Audio")]
+    [SerializeField] protected AudioClip attackSound;
+    [Foldout("Audio")]
+    [SerializeField] protected AudioClip readySound;
+
     private void Start()
     {
         canAttack = true;
@@ -30,7 +37,7 @@ public class Weapon : Interactable
         StartCoroutine(AttackCooldown());
     }
 
-    private IEnumerator AttackCooldown()
+    protected IEnumerator AttackCooldown()
     {
         canAttack = false;
         yield return new WaitForSeconds(attackCooldown);
@@ -49,6 +56,8 @@ public class Weapon : Interactable
         GetComponent<CircleCollider2D>().enabled = false;
         animator = GetComponentInParent<Animator>();
         spriteRenderer.sprite = heldSprite;
+
+        AudioManager.instance.Play(readySound, AudioManager.instance.SFXVolume, false, false, transform.position);
     }
 
     public virtual void Drop()

@@ -51,8 +51,8 @@ public class Enemy : MonoBehaviour
     public void DropWeapon()
     {
         weapon.transform.SetParent(null);
-        Vector3 dropPos = Quaternion.Euler(0, 0, Random.Range(0, 360f)) * transform.right * dropRadius;
-        weapon.transform.position += dropPos;
+        Vector2 dropPos = transform.position + Quaternion.Euler(0, 0, Random.Range(0, 360f)) * transform.right * dropRadius;
+        weapon.transform.position = dropPos;
         weapon.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360f));
         weapon.Drop();
     }

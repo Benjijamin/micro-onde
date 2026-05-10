@@ -1,4 +1,5 @@
 using System;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class Gun : Weapon
@@ -12,6 +13,15 @@ public class Gun : Weapon
     [SerializeField] protected int ammoCount;
     [SerializeField] protected float bulletVelocity;
 
+    [Foldout("Audio")]
+    [SerializeField] private bool canReload;
+    [Foldout("Audio")]
+    [ShowIf("canReload")]
+    [SerializeField] private AudioClip reloadSound;
+    [Foldout("Audio")]
+    [ShowIf("canReload")]
+    [SerializeField] private float reloadSoundDelay;
+
     public override void Attack(bool userIsPlayer)
     {
         base.Attack(userIsPlayer);
@@ -21,11 +31,13 @@ public class Gun : Weapon
         }
         Shoot(userIsPlayer);
         OnAttack?.Invoke(ammoCount, maxAmmoCount);
+        AudioManager.instance.Play(attackSound, AudioManager.instance.SFXVolume, false, true, transform.position);
     }
 
     protected virtual void Shoot(bool usedByPlayer)
     {
         animator.Play("Shoot", 0, 0);
+        AudioManager.instance.Play(reloadSound, AudioManager.instance.SFXVolume, false, false, transform, reloadSoundDelay);
 
         if (muzzleFlashPrefab != null) 
         {

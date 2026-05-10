@@ -666,6 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beadef4d9186a1f4abc2a6338c28aae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  inputLocked: 0
   speed: 5
 --- !u!114 &1992201073367331297
 MonoBehaviour:
@@ -713,6 +714,9 @@ MonoBehaviour:
   - {fileID: 7751620612912553160, guid: 405065f8fb899354b8d6abee90017f24, type: 3}
   bloodDeathPrefab: {fileID: 1098993732762065873, guid: af7aabf683d3d0744bbfe3b8dacdcbfd, type: 3}
   bloodSplatDistance: {x: 0.5, y: 1}
+  deathSounds:
+  - {fileID: 8300000, guid: 50bd73e8d54f31446af0bcd53a2f4930, type: 3}
+  - {fileID: 8300000, guid: 350dea646bf505b459d5bf4aec8abef7, type: 3}
 --- !u!50 &9125416664116977051
 Rigidbody2D:
   serializedVersion: 5

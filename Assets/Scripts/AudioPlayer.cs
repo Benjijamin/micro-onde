@@ -9,30 +9,31 @@ public class AudioPlayer : MonoBehaviour
 
     private Coroutine fadeCoroutine;
 
-    public void Play(AudioClip clip, float volume, float pitch, bool loop, bool spatialBlend = false)
+    public void Play(AudioClip clip, float volume, float pitch, bool loop, bool spatialBlend = false, float delay = 0f)
     {
         source.clip = clip;
         source.volume = volume;
         source.pitch = pitch;
         source.loop = loop;
         source.spatialBlend = spatialBlend ? 1 : 0;
-        source.Play();
+        if(clip == null) { return; }
+        source.PlayDelayed(delay);
     }
 
-    public void Play(AudioClip clip, float volume, float pitch, bool loop, Vector2 position)
+    public void Play(AudioClip clip, float volume, float pitch, bool loop, Vector2 position, float delay = 0f)
     {
         transform.position = position;
-        Play(clip, volume, pitch, loop, true);
+        Play(clip, volume, pitch, loop, true, delay);
     }
 
-    public void Play(AudioClip clip, float volume, float pitch, bool loop, Transform followTarget)
+    public void Play(AudioClip clip, float volume, float pitch, bool loop, Transform followTarget, float delay = 0f)
     {
         ConstraintSource parent = new ConstraintSource();
         parent.sourceTransform = followTarget;
         parent.weight = 1;
         constraint.AddSource(parent);
         constraint.enabled = true;
-        Play(clip, volume, pitch, loop, true);
+        Play(clip, volume, pitch, loop, true, delay);
     }
 
     public void Abort()

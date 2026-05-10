@@ -302,6 +302,8 @@ MonoBehaviour:
   maxScoreDuration: 90
   killMultis: []
   bonusMultis: []
+  minorNotifSound: {fileID: 8300000, guid: 2f0edc06cf3fed14ea5c898eb7c1c008, type: 3}
+  majorNotifSound: {fileID: 8300000, guid: 3a8e870e6e782204dabe526155afd023, type: 3}
 --- !u!1 &4073324061523466323
 GameObject:
   m_ObjectHideFlags: 0

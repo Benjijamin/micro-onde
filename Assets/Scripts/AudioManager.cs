@@ -26,27 +26,27 @@ public class AudioManager : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public AudioPlayer Play(AudioClip clip, float volume, bool loop, bool shiftPitch = false) // Plays global audio (use for music)
+    public AudioPlayer Play(AudioClip clip, float volume, bool loop, bool shiftPitch = false, float delay = 0f) // Plays global audio (use for music)
     {
         AudioPlayer player = GetAudioPlayer();
-        player.Play(clip, volume, GetPitch(shiftPitch), loop);
-        audioPlaying.Add(player, loop ? null : StartCoroutine(ReturnAudioPlayerAfterClip(player, clip.length)));
+        player.Play(clip, volume, GetPitch(shiftPitch), loop, delay: delay);
+        audioPlaying.Add(player, loop || !clip ? null : StartCoroutine(ReturnAudioPlayerAfterClip(player, clip.length + delay)));
         return player;
     }
 
-    public AudioPlayer Play(AudioClip clip, float volume, bool loop, bool shiftPitch, Vector2 position) // Plays audio targeted at position
+    public AudioPlayer Play(AudioClip clip, float volume, bool loop, bool shiftPitch, Vector2 position, float delay = 0f) // Plays audio targeted at position
     {
         AudioPlayer player = GetAudioPlayer();
-        player.Play(clip, volume, GetPitch(shiftPitch), loop, position);
-        audioPlaying.Add(player, loop ? null : StartCoroutine(ReturnAudioPlayerAfterClip(player, clip.length)));
+        player.Play(clip, volume, GetPitch(shiftPitch), loop, position, delay);
+        audioPlaying.Add(player, loop || !clip ? null : StartCoroutine(ReturnAudioPlayerAfterClip(player, clip.length + delay)));
         return player;
     }
 
-    public AudioPlayer Play(AudioClip clip, float volume, bool loop, bool shiftPitch, Transform followTarget) // Plays audio targeted at target object (use to follow moving objects)
+    public AudioPlayer Play(AudioClip clip, float volume, bool loop, bool shiftPitch, Transform followTarget, float delay = 0f) // Plays audio targeted at target object (use to follow moving objects)
     {
         AudioPlayer player = GetAudioPlayer();
-        player.Play(clip, volume, GetPitch(shiftPitch), loop, followTarget);
-        audioPlaying.Add(player, loop ? null : StartCoroutine(ReturnAudioPlayerAfterClip(player, clip.length)));
+        player.Play(clip, volume, GetPitch(shiftPitch), loop, followTarget, delay);
+        audioPlaying.Add(player, loop || !clip ? null : StartCoroutine(ReturnAudioPlayerAfterClip(player, clip.length + delay)));
         return player;
     }
 

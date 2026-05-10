@@ -4,6 +4,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement Instance;
 
+    public bool inputLocked;
+
     [SerializeField] private float speed;
 
     private Rigidbody2D rb;
@@ -21,10 +23,19 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        GetComponent<PlayerHealth>().onDeath += OnDeath;
+    }
+
+    private void OnDeath()
+    {
+        inputLocked = true;
+        rb.linearVelocity = Vector3.zero;
+        GetComponent<CircleCollider2D>().enabled = false;
     }
 
     private void Update()
     {
+        if (inputLocked) { return; }
         Move();
         Look();
     }
