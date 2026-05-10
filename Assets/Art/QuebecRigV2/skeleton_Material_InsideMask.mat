@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: skeleton_Material
+  m_Name: skeleton_Material_InsideMask
   m_Shader: {fileID: -6465566751694194690, guid: 8aaa6f45cc54ec44693fd183527175e7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -49,7 +49,7 @@ Material:
     - _OutlineReferenceTexWidth: 1024
     - _OutlineSmoothness: 1
     - _OutlineWidth: 3
-    - _StencilComp: 8
+    - _StencilComp: 4
     - _StencilRef: 1
     - _StraightAlphaInput: 1
     - _Threshold: 0
@@ -61,7 +61,7 @@ Material:
     - _OutlineColor: {r: 1, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &5337325386286312060
+--- !u!114 &5022377154352434969
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
