@@ -12,6 +12,7 @@ public class Gun : Weapon
     [SerializeField] protected int maxAmmoCount;
     [SerializeField] protected int ammoCount;
     [SerializeField] protected float bulletVelocity;
+    [SerializeField] protected CharacterAnim attackAnim;
 
     [Foldout("Audio")]
     [SerializeField] private bool canReload;
@@ -31,6 +32,8 @@ public class Gun : Weapon
         }
         Shoot(userIsPlayer);
         OnAttack?.Invoke(ammoCount, maxAmmoCount);
+
+        wielder.GetComponent<CharacterAnimationController>().SetAnimation(attackAnim);
         AudioManager.instance.Play(attackSound, AudioManager.instance.SFXVolume, false, true, transform.position);
     }
 

@@ -188,6 +188,7 @@ MonoBehaviour:
   maxAmmoCount: 10
   ammoCount: 10
   bulletVelocity: 50
+  attackAnim: 7
   canReload: 1
   reloadSound: {fileID: 8300000, guid: 1b7b3c54536b837468d8702ea7862d8e, type: 3}
   reloadSoundDelay: 0.116

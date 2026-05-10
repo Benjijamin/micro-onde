@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Spine;
 using Spine.Unity;
@@ -11,27 +12,25 @@ public class CharacterAnimationController : MonoBehaviour
     //  pose    = 1
     //  action  = 2
 
-    [SpineAnimation][SerializeField] private string walkAnim;
+    [Serializable]
+    public class AnimationTrackRecord
+    {
+        public CharacterAnim animName;
+        [SpineAnimation] public string anim;
+        public CharacterAnimTrack track;
+        public bool loopingAnimation;
+    }
 
-    [SpineAnimation][SerializeField] private string poseHands;
-    [SpineAnimation][SerializeField] private string posePistol;
-    [SpineAnimation][SerializeField] private string poseRifle;
-
-    [SpineAnimation][SerializeField] private string punch1;
-    [SpineAnimation][SerializeField] private string punch2;
+    [SerializeField] private AnimationTrackRecord[] trackRecords;
 
     private Dictionary<CharacterAnim, (string, int, bool)> animToTrackMap = new Dictionary<CharacterAnim, (string, int, bool)>();
 
     private void Start()
     {
-        animToTrackMap.Add(CharacterAnim.Walk, (walkAnim, (int)CharacterAnimTrack.Passive, true));
-
-        animToTrackMap.Add(CharacterAnim.PoseHands, (poseHands, (int)CharacterAnimTrack.Pose, true));
-        animToTrackMap.Add(CharacterAnim.PosePistol, (posePistol, (int)CharacterAnimTrack.Pose, true));
-        animToTrackMap.Add(CharacterAnim.PoseRifle, (poseRifle, (int)CharacterAnimTrack.Pose, true));
-
-        animToTrackMap.Add(CharacterAnim.Punch1, (punch1, (int)CharacterAnimTrack.Action, false));
-        animToTrackMap.Add(CharacterAnim.Punch2, (punch2, (int)CharacterAnimTrack.Action, false));
+        foreach (AnimationTrackRecord record in trackRecords)
+        {
+            animToTrackMap.Add(record.animName, (record.anim, (int)record.track, record.loopingAnimation));
+        }
     }
 
     public void SetAnimation(CharacterAnim anim)
@@ -74,7 +73,7 @@ public class CharacterAnimationController : MonoBehaviour
 
 public enum CharacterAnim
 {
-    Walk, PoseHands, PosePistol, PoseRifle, Punch1, Punch2
+    Walk, PoseHands, PosePistol, PoseRifle, Punch1, Punch2, ShootPistol, ShootRifle
 }
 
 //  Passive is things like walking/running/idle, something you do without thinking
