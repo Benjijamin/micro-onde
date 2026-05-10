@@ -14,6 +14,7 @@ public class EnemyHealth : Health
         ScoreManager.Instance.ScoreKill(recentSwap, melee, !enemy.hasBeenAlerted, !enemy.hasBeenPinged, enemy.transform.position);
 
         enemy.DropWeapon();
+        enemy.Explode();
         Destroy(enemy.gameObject);
 
         base.Die();
