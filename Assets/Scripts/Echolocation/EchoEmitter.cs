@@ -11,7 +11,7 @@ public class EchoEmitter : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Space) && timer < 0)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && timer < 0)
             StartCoroutine(EmitWaves(settings.NbWaves, settings.TimeInterval)); 
     }
 
