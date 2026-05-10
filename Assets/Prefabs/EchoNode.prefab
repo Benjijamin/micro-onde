@@ -156,7 +156,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!114 &7490106703965663730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,3 +169,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d2fa6f0ffdaff4892e43630b9191ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EchoNode
+  waveId: 0

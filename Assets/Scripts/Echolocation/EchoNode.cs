@@ -10,9 +10,16 @@ public class EchoNode : MonoBehaviour
 
     public Action OnExpired;
 
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     private void FixedUpdate()
     {
-        transform.position += transform.up * Speed * Time.fixedDeltaTime;
+        rb.linearVelocity = transform.up * Speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -27,7 +34,7 @@ public class EchoNode : MonoBehaviour
         transform.up = reflectDir;
     }
 
-    public void Expire() 
+    public void Expire()
     {
         OnExpired?.Invoke();
         gameObject.SetActive(false);
