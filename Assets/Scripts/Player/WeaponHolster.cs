@@ -27,6 +27,7 @@ public class WeaponHolster : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerMovement.Instance.inputLocked) { return; }
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (currentWeapon is Gun)
         {

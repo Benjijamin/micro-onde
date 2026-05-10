@@ -46,8 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultWeapon
   interactText: 'Pick up [E]'
+  wielder: {fileID: 0}
   attackCooldown: 0.5
   damage: 5
+  heldSprite: {fileID: 0}
+  droppedSprite: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 7b3cc0636c189a84099b6c71a42dcf21, type: 3}
+  readySound: {fileID: 0}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -55,6 +60,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   swingBoxDimensions: {x: 2, y: 1}
+  attackMissSound: {fileID: 8300000, guid: 353606c5c2d57ca4ab6b0f2f4c17ef40, type: 3}
 --- !u!58 &2790260923495399369
 CircleCollider2D:
   m_ObjectHideFlags: 0

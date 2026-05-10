@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using NUnit.Framework;
 using System;
 using System.Collections;
@@ -11,7 +12,7 @@ using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
     [Serializable]
-    private class Multiplier 
+    private class Multiplier
     {
         public float value;
         public float timer = 0f;
@@ -91,6 +92,11 @@ public class ScoreManager : MonoBehaviour
     private List<Multiplier> bonusMultis = new List<Multiplier>();
 
     public static ScoreManager Instance;
+
+    [Foldout("Audio")]
+    [SerializeField] private AudioClip minorNotifSound;
+    [Foldout("Audio")]
+    [SerializeField] private AudioClip majorNotifSound;
 
     private void Awake()
     {
@@ -475,7 +481,7 @@ public class ScoreManager : MonoBehaviour
     {
         GameObject m = Instantiate(scoreMessagePrefab, messages);
         ScoreMessage sm = m.GetComponent<ScoreMessage>();
-
+        AudioManager.instance.Play(minorNotifSound, AudioManager.instance.SFXVolume, false, true);
         sm.SetMessage(message.text, message.emphasis);
     }
 
@@ -492,7 +498,7 @@ public class ScoreManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         GameObject m = Instantiate(scoreMessagePrefab, middleOfScreen);
         ScoreMessage sm = m.GetComponent<ScoreMessage>();
-
+        AudioManager.instance.Play(majorNotifSound, AudioManager.instance.SFXVolume, false, true);
         sm.SetMessage(message, emphasis);
     }
 

@@ -1411,6 +1411,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 835398310816513647, guid: 69b796a0efa321d479d21814fe93bffd, type: 3}
+      propertyPath: pitchShiftRadius
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2003226853775233553, guid: 69b796a0efa321d479d21814fe93bffd, type: 3}
       propertyPath: m_Name
       value: AudioManager

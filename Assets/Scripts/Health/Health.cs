@@ -13,8 +13,14 @@ public class Health : MonoBehaviour
 
     public Action onDeath;
 
+    protected bool isDead;
+
+    [Foldout("Audio")]
+    [SerializeField] private AudioClip[] deathSounds;
+
     public virtual void TakeDamage(int damage, Vector3 direction, bool recentSwap = false, bool melee = false)
     {
+        if (isDead) { return; }
         health -= damage;
 
         if (health <= 0)
@@ -28,7 +34,10 @@ public class Health : MonoBehaviour
 
     protected virtual void Die(bool recentSwap = false, bool melee = false)
     {
+        isDead = true;
         Instantiate(bloodDeathPrefab, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360f)));
         onDeath?.Invoke();
+
+        AudioManager.instance.Play(deathSounds[Random.Range(0, deathSounds.Length)], AudioManager.instance.SFXVolume, false, true, transform.position);
     }
 }
