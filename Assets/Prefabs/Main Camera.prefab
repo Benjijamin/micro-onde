@@ -71,7 +71,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -110,6 +110,8 @@ MonoBehaviour:
   objectToFollow: {fileID: 0}
   baseOffset: {x: 0, y: 0, z: -10}
   smoothTranslationTime: 0.2
+  cursorInfluence: 0.2
+  cursorRatioThreshold: 0.5
   maxPanAngle: 3
   smoothRotationTime: 3
 --- !u!114 &-2785501865848840002

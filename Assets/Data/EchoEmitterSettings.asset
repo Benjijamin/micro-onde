@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: EchoEmitterSettings
   m_EditorClassIdentifier: Assembly-CSharp::EchoEmitterSettings
   NbWaves: 4
-  TimeInterval: 0.2
-  Speed: 6
+  TimeInterval: 0.15
+  Speed: 8
   ConeAngle: 45
   Radius: 0.2
-  LifeTime: 5
-  MaxBounces: 4
+  LifeTime: 4
+  MaxBounces: 3
   NbNodePerWave: 30

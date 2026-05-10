@@ -7,6 +7,8 @@ public class CameraManager : MonoBehaviour
     [Header("Translation")]
     [SerializeField] private Vector3 baseOffset;
     [SerializeField] private float smoothTranslationTime;
+    [SerializeField, Range(0,1)] private float cursorInfluence;
+    [SerializeField, Range(0,1)] private float cursorRatioThreshold;
 
     [Header("Rotation")]
     [SerializeField] private float maxPanAngle;
@@ -17,11 +19,13 @@ public class CameraManager : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
     private float angleVelocity = 0;
-    private Vector3 newPosition = Vector3.zero;
     private Vector3 lastPosition;
     private float shakeTimer;
 
     public static CameraManager instance;
+
+    private Vector3 CursorPosition => Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    private Vector3 TargetPosition => Vector3.Lerp(objectToFollow.position, CursorPosition, cursorInfluence);
 
     private void Awake()
     {
@@ -76,9 +80,21 @@ public class CameraManager : MonoBehaviour
 
     private void FollowTarget()
     {
-        newPosition.x = objectToFollow.position.x + baseOffset.x;
-        newPosition.y = objectToFollow.position.y + baseOffset.y;
-        newPosition.z = objectToFollow.position.z + baseOffset.z;
+        Vector2 mousePos = Input.mousePosition;
+        float xRatio = Mathf.Abs((mousePos.x / Screen.width - 0.5f) * 2f);
+        float yRatio = Mathf.Abs((mousePos.y / Screen.height - 0.5f) * 2f);
+
+        Vector3 newPosition = baseOffset;
+
+        if (xRatio >= cursorRatioThreshold)
+            newPosition.x += Mathf.Lerp(objectToFollow.position.x, CursorPosition.x, cursorInfluence);
+        else
+            newPosition.x += objectToFollow.position.x;
+
+        if (yRatio >= cursorRatioThreshold)
+            newPosition.y += Mathf.Lerp(objectToFollow.position.y, CursorPosition.y, cursorInfluence);
+        else
+            newPosition.y += objectToFollow.position.y;
 
         transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTranslationTime);
     }
