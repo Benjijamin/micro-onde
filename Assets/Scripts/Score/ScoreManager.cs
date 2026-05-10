@@ -113,6 +113,11 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoad;
+    }
+
     private void OnSceneLoad(Scene scene, LoadSceneMode sceneMode)
     {
         if (scene.name != "MainMenu") 
