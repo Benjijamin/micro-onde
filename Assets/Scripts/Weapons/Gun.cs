@@ -40,7 +40,10 @@ public class Gun : Weapon
     protected virtual void Shoot(bool usedByPlayer)
     {
         animator.Play("Shoot", 0, 0);
-        AudioManager.instance.Play(reloadSound, AudioManager.instance.SFXVolume, false, false, transform, reloadSoundDelay);
+        if(ammoCount > 0)
+        {
+            AudioManager.instance.Play(reloadSound, AudioManager.instance.SFXVolume, false, false, transform, reloadSoundDelay);
+        }
 
         if (muzzleFlashPrefab != null) 
         {
