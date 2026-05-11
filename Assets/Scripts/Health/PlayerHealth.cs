@@ -9,6 +9,8 @@ public class PlayerHealth : Health
     {
         base.Die();
         OnPlayerDeath?.Invoke(false);
+        Explode();
+        gameObject.SetActive(false);
     }
 
     public void Suicide()
@@ -16,5 +18,14 @@ public class PlayerHealth : Health
         base.Die();
         OnPlayerDeath?.Invoke(true);
         ScoreManager.Instance.ShowSuicideMessage();
+    }
+
+    private void Explode()
+    {
+        Gibs g = GetComponentInChildren<Gibs>();
+        if (g != null)
+        {
+            g.Explode();
+        }
     }
 }

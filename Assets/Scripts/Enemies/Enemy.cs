@@ -66,15 +66,6 @@ public class Enemy : MonoBehaviour
         weapon.Drop();
     }
 
-    public void Explode() 
-    {
-        Gibs g = GetComponentInChildren<Gibs>();
-        if (g != null) 
-        {
-            g.Explode();
-        }
-    }
-
     private void Update()
     {
         Transform player = PlayerMovement.Instance.transform;

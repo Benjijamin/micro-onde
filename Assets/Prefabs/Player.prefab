@@ -496,6 +496,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractText
   interactText: {fileID: 6270243265879068803}
+--- !u!1 &2839587140956125339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4751891796119395675}
+  - component: {fileID: 6973501154215050001}
+  m_Layer: 13
+  m_Name: Gibs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4751891796119395675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2839587140956125339}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7963360996204391138}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6973501154215050001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2839587140956125339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acafb923ad4a81845b0e4c3ede70e04e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gibs
+  gibs:
+  - {fileID: 7001284243605392460, guid: 51e5e7257e7b3064182c8018ab7679ad, type: 3}
+  - {fileID: 7001284243605392460, guid: f9e53c794df84a942a7526c22a61ae31, type: 3}
+  - {fileID: 7001284243605392460, guid: 30f7219003a70264d84d33ed251cd77c, type: 3}
+  - {fileID: 7001284243605392460, guid: b9dcd8c64f0c1c048bf98cc92d4b5e35, type: 3}
+  - {fileID: 7001284243605392460, guid: a4e307ad44a17e44ba75bafd3167c64f, type: 3}
+  minforce: 40
+  maxForce: 80
 --- !u!1 &3092238515581987099
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +671,7 @@ Transform:
   - {fileID: 7826361594518888595}
   - {fileID: 5828274723958822867}
   - {fileID: 3215831272358734748}
+  - {fileID: 4751891796119395675}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6779281695010244690

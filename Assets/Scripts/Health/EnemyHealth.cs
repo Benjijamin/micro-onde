@@ -14,7 +14,7 @@ public class EnemyHealth : Health
         ScoreManager.Instance.ScoreKill(recentSwap, melee, !enemy.hasBeenAlerted, !enemy.hasBeenPinged, enemy.transform.position);
 
         enemy.DropWeapon();
-        enemy.Explode();
+        Explode();
         Destroy(enemy.gameObject);
 
         base.Die();
@@ -23,5 +23,14 @@ public class EnemyHealth : Health
     public override void TakeDamage(int damage, Vector3 direction, bool recentSwap = false, bool melee = false)
     {
         base.TakeDamage(damage, direction, recentSwap, melee);
+    }
+
+    private void Explode()
+    {
+        Gibs g = GetComponentInChildren<Gibs>();
+        if (g != null)
+        {
+            g.Explode();
+        }
     }
 }
