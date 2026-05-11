@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         bool swap = false;
         if (usedByPlayer)
         {
-            swap = FindAnyObjectByType<WeaponHolster>().HasSwappedRecently;
+            swap = FindAnyObjectByType<WeaponHolster>(FindObjectsInactive.Include).HasSwappedRecently;
             enemy = collision.gameObject.GetComponent<EnemyHealth>();
         }
         else
