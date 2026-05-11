@@ -5,7 +5,7 @@ public class Melee : Weapon
 {
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private LayerMask playerLayer;
-    [SerializeField] private Vector2 swingBoxDimensions;    // x = length, y = width
+    [SerializeField] private Vector2 swingBoxDimensions;    // x = hit wideness, y = hit range
 
     [Foldout("Audio")]
     [SerializeField] private AudioClip attackMissSound;
@@ -14,7 +14,8 @@ public class Melee : Weapon
     {
         base.Attack(userIsPlayer);
         Animate();
-        Collider2D[] enemies = Physics2D.OverlapBoxAll(transform.root.position + (-transform.root.up * swingBoxDimensions.y), swingBoxDimensions, transform.root.rotation.z, userIsPlayer ? enemyLayer : playerLayer);
+        float angle = Vector2.SignedAngle(Vector2.up, -transform.root.up);
+        Collider2D[] enemies = Physics2D.OverlapBoxAll(transform.root.position + (-transform.root.up * swingBoxDimensions.y), swingBoxDimensions, angle, userIsPlayer ? enemyLayer : playerLayer);
         foreach (Collider2D enemy in enemies)
         {
             Vector2 direction = (enemy.transform.position - wielder.position).normalized;
@@ -25,7 +26,7 @@ public class Melee : Weapon
             }
             else
             {
-                enemy.GetComponent<PlayerHealth>().TakeDamage(damage, direction);
+                enemy.GetComponentInParent<PlayerHealth>().TakeDamage(damage, direction);
             }
         }
         AudioManager.instance.Play(enemies.Length > 0 ? attackSound : attackMissSound, AudioType.Sfx, false, true, transform.position);
@@ -41,7 +42,7 @@ public class Melee : Weapon
         if(user != PlayerMovement.Instance.transform)
         {
             float distanceToPlayer = (user.transform.position - PlayerMovement.Instance.transform.position).magnitude;
-            return base.CanAttack() && distanceToPlayer < swingBoxDimensions.y;
+            return base.CanAttack() && distanceToPlayer < swingBoxDimensions.x;
         }
         return base.CanAttack();
     }

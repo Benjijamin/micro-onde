@@ -68,6 +68,7 @@ public class Weapon : Interactable
 
     public virtual void Drop()
     {
+        if(this is DefaultWeapon) { return; }
         GetComponent<CircleCollider2D>().enabled = true;
         wielder = null;
         animator = null;
