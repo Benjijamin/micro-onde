@@ -82,7 +82,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 2850678636e57204f9d3ac5ed6b1fc04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -149,6 +149,8 @@ MonoBehaviour:
   heldSprite: {fileID: 21300000, guid: 57009d11e45f4fe4581bf2c03282b3da, type: 3}
   droppedSprite: {fileID: 21300000, guid: 2850678636e57204f9d3ac5ed6b1fc04, type: 3}
   characterPose: 3
+  heldSortOrder: 1
+  droppedSortOrder: -1
   attackSound: {fileID: 8300000, guid: 4b33c8b9257fcd044a7e3b06e094a5df, type: 3}
   readySound: {fileID: 8300000, guid: b2360d654b7bbc04fb765daad6475ba5, type: 3}
   bulletprefab: {fileID: 4855521546068348494, guid: 4b670e6b37d0f3a42b8dc5d738fabcbd, type: 3}
