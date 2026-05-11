@@ -78,7 +78,6 @@ public class LevelManager : MonoBehaviour
         MessageManager.instance.ShowLevelCleared(3);
         ScoreManager.Instance.ShowEndOfLevelScore(3f);
         OnLevelCleared?.Invoke();
-        ScoreManager.Instance.RecordScore();
     }
 
     private void OnDestroy()
