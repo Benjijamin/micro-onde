@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: da19439e9379f414788d8454d7a500df, type: 3}
+  m_Sprite: {fileID: 4949291356794540364, guid: e2e9b0ddbc9c7d1448936c5d3d64b85f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,8 +146,8 @@ MonoBehaviour:
   wielder: {fileID: 0}
   attackCooldown: 0.5
   damage: 7
-  heldSprite: {fileID: 21300000, guid: 7df7ba5c6c84fff419ee076cea4f2b09, type: 3}
-  droppedSprite: {fileID: 21300000, guid: da19439e9379f414788d8454d7a500df, type: 3}
+  heldSprite: {fileID: 1387830345618318802, guid: bfa3c07e550fe684689e9619e1759781, type: 3}
+  droppedSprite: {fileID: 4949291356794540364, guid: e2e9b0ddbc9c7d1448936c5d3d64b85f, type: 3}
   characterPose: 2
   heldSortOrder: 1
   droppedSortOrder: -1
