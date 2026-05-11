@@ -533,6 +533,8 @@ MonoBehaviour:
   revealDuration: 3
   hasBeenAlerted: 0
   hasBeenPinged: 0
+  footstep: {fileID: 8300000, guid: dd7aaf7ad7513d64d8d42480468614f8, type: 3}
+  travelDistancePerStep: 1.5
 --- !u!114 &3986657224932576299
 MonoBehaviour:
   m_ObjectHideFlags: 0
