@@ -274,7 +274,7 @@ public class ScoreManager : MonoBehaviour
 
     public void ScoreLastBullet()
     {
-        if (noMorePoints)
+        if (!noMorePoints)
         {
             RefreshBonusMultis();
 

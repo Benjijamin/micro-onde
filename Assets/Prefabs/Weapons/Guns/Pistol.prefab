@@ -156,8 +156,8 @@ MonoBehaviour:
   bulletprefab: {fileID: 4855521546068348494, guid: 4b670e6b37d0f3a42b8dc5d738fabcbd, type: 3}
   muzzleFlashPrefab: {fileID: 326817088376544662, guid: f7d0d38acd2ee144eb7c95b5197df56c, type: 3}
   muzzleTransform: {fileID: 312961666700464159}
-  maxAmmoCount: 10
-  ammoCount: 10
+  maxAmmoCount: 3
+  ammoCount: 3
   bulletVelocity: 30
   attackAnim: 6
   canReload: 0
