@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ad928fdd7e182b8498813c1382eb0ef3
+guid: 83325f47d0c5c414cafd9f5e828c29ad
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8364033024573163210
-    second: Level4Walls_0
+      213: 4949291356794540364
+    second: Pistolet_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Level4Walls_0
+      name: Pistolet_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 218
-        width: 1586
-        height: 578
+        x: 400
+        y: 618
+        width: 20
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ac6c157a8b3031470800000000000000
-      internalID: 8364033024573163210
+      spriteID: c4156ab344a6fa440800000000000000
+      internalID: 4949291356794540364
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Level4Walls_0: 8364033024573163210
+      Pistolet_0: 4949291356794540364
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

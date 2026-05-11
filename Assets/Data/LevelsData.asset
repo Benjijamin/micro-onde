@@ -19,12 +19,12 @@ MonoBehaviour:
   - Scene: Level2
     IntroText: 'level 2 '
     IntroDuration: 3
-  - Scene: Level1
+  - Scene: Level3
     IntroText: level 3
     IntroDuration: 3
-  - Scene: Level1
+  - Scene: Level4
     IntroText: level 4
     IntroDuration: 3
-  - Scene: Level1
+  - Scene: Level5
     IntroText: level 5
     IntroDuration: 3
