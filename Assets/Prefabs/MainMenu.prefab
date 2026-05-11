@@ -1102,8 +1102,8 @@ MonoBehaviour:
   startMenu: {fileID: 5334125635299258556}
   levelSelectionMenu: {fileID: 59897263773822539}
   OptionsMenu: {fileID: 0}
-  menuMusic: {fileID: 0}
-  clickSound: {fileID: 0}
+  menuMusic: {fileID: 8300000, guid: f300e4871849d554ebcbeaf17787030c, type: 3}
+  clickSound: {fileID: 8300000, guid: 67d7b9c798ae07d428366b7f81b76e1d, type: 3}
 --- !u!1 &2068587147057274656
 GameObject:
   m_ObjectHideFlags: 0
