@@ -34,7 +34,7 @@ public class Gun : Weapon
         OnAttack?.Invoke(ammoCount, maxAmmoCount);
 
         wielder.GetComponent<CharacterAnimationController>().SetAnimation(attackAnim);
-        AudioManager.instance.Play(attackSound, AudioManager.instance.SFXVolume, false, true, transform.position);
+        AudioManager.instance.Play(attackSound, AudioType.Sfx, false, true, transform.position);
     }
 
     protected virtual void Shoot(bool usedByPlayer)
@@ -42,7 +42,7 @@ public class Gun : Weapon
         animator.Play("Shoot", 0, 0);
         if(ammoCount > 0)
         {
-            AudioManager.instance.Play(reloadSound, AudioManager.instance.SFXVolume, false, false, transform, reloadSoundDelay);
+            AudioManager.instance.Play(reloadSound, AudioType.Sfx, false, false, transform, reloadSoundDelay);
         }
 
         if (muzzleFlashPrefab != null) 

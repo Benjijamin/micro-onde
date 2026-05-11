@@ -38,6 +38,6 @@ public class Health : MonoBehaviour
         Instantiate(bloodDeathPrefab, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360f)));
         onDeath?.Invoke();
 
-        AudioManager.instance.Play(deathSounds[Random.Range(0, deathSounds.Length)], AudioManager.instance.SFXVolume, false, true, transform.position);
+        AudioManager.instance.Play(deathSounds[Random.Range(0, deathSounds.Length)], AudioType.Sfx, false, true, transform.position);
     }
 }

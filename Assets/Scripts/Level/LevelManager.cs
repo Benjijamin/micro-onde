@@ -48,8 +48,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        inGameThemePlayer = AudioManager.instance.Play(inGameTheme, AudioManager.instance.musicVolume, true);
-        inGameThemePlayer.FadeIn(AudioManager.instance.musicVolume, 0.5f);
+        inGameThemePlayer = AudioManager.instance.Play(inGameTheme, AudioType.Music, true);
+        inGameThemePlayer.FadeIn(1, 0.5f);
     }
 
     private void OnEnemyDeath()

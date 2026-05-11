@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0bdffd537ed47746ad6241f6f29c74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  sfxGroup: {fileID: -4698115241177853859, guid: 7b87ada518f5b6e4899ac634e26b3bfc, type: 2}
+  musicGroup: {fileID: -1443476834146457869, guid: 7b87ada518f5b6e4899ac634e26b3bfc, type: 2}
   audioPlayerPrefab: {fileID: 2133466382283554328, guid: 7811ff6b58917aa418c2ae6b0d3d266a, type: 3}
   pitchShiftRadius: 0.05

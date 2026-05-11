@@ -24,7 +24,7 @@ public class EchoEmitter : MonoBehaviour
         timer = cooldown;
         Vector3 dirSnapshot = -transform.up;
 
-        AudioManager.instance.Play(echoSound, AudioManager.instance.SFXVolume, false, true, transform);
+        AudioManager.instance.Play(echoSound, AudioType.Sfx, false, true, transform);
 
         for (int i = 0; i < count; i++)
         {

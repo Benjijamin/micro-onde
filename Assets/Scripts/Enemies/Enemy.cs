@@ -103,7 +103,7 @@ public class Enemy : MonoBehaviour
         if(distanceTravelled > travelDistancePerStep)
         {
             distanceTravelled -= travelDistancePerStep;
-            AudioManager.instance.Play(footstep, AudioManager.instance.SFXVolume, false, true, transform.position);
+            AudioManager.instance.Play(footstep, AudioType.Sfx, false, true, transform.position);
         }
     }
 
