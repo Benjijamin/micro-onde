@@ -426,6 +426,8 @@ public class ScoreManager : MonoBehaviour
 
     public void RevertScore() 
     {
+        ResetKillMultis();
+        ResetBonusMultis();
         Score = recordedScore;
     }
 
