@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: 2bb145e21a75da94cb0a23bcd9c82010
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1534499452506574710
+    second: Level4Boxes_0
+  - first:
+      213: -8843851155000189709
+    second: Level4Boxes_1
+  - first:
+      213: 8455061854444729064
+    second: Level4Boxes_2
+  - first:
+      213: 6982227973593184929
+    second: Level4Boxes_3
+  - first:
+      213: -2405784386492924015
+    second: Level4Boxes_4
+  - first:
+      213: -2697755897474725799
+    second: Level4Boxes_5
+  - first:
+      213: -2054457455653175392
+    second: Level4Boxes_6
+  - first:
+      213: -690993514803088681
+    second: Level4Boxes_7
+  - first:
+      213: -3378579688349473562
+    second: Level4Boxes_8
+  - first:
+      213: 3679244582436896162
+    second: Level4Boxes_9
+  - first:
+      213: -2129120096514268230
+    second: Level4Boxes_10
+  - first:
+      213: -7832567136943632195
+    second: Level4Boxes_11
+  - first:
+      213: 4881390493231649386
+    second: Level4Boxes_12
+  - first:
+      213: -3590608314938811809
+    second: Level4Boxes_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Level4Boxes_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 558
+        width: 38
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67f8fa63f13ab4510800000000000000
+      internalID: 1534499452506574710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level4Boxes_1
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 696
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fc19c33b34544580800000000000000
+      internalID: -8843851155000189709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level4Boxes_2
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 698
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e23224b5f9665570800000000000000
+      internalID: 8455061854444729064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level4Boxes_3
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 604
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aa31da395bd5e060800000000000000
+      internalID: 6982227973593184929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level4Boxes_4
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 251
+        width: 38
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19f78ecc8dfec9ed0800000000000000
+      internalID: -2405784386492924015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level4Boxes_5
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 342
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 958cd48fd45af8ad0800000000000000
+      internalID: -2697755897474725799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level4Boxes_6
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 374
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0afb3ad34d91d73e0800000000000000
+      internalID: -2054457455653175392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level4Boxes_7
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 328
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d230103f091966f0800000000000000
+      internalID: -690993514803088681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level4Boxes_8
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 276
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e464968cafdc11d0800000000000000
+      internalID: -3378579688349473562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level4Boxes_9
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 261
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ad7ee9447d4f0330800000000000000
+      internalID: 3679244582436896162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level4Boxes_10
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 326
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab32f138d88d372e0800000000000000
+      internalID: -2129120096514268230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level4Boxes_11
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 262
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db0931b00b12d4390800000000000000
+      internalID: -7832567136943632195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level4Boxes_12
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 252
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a629a077ace2eb340800000000000000
+      internalID: 4881390493231649386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level4Boxes_13
+      rect:
+        serializedVersion: 2
+        x: 1535
+        y: 250
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5a128ce2c89b2ec0800000000000000
+      internalID: -3590608314938811809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Level4Boxes_0: 1534499452506574710
+      Level4Boxes_1: -8843851155000189709
+      Level4Boxes_10: -2129120096514268230
+      Level4Boxes_11: -7832567136943632195
+      Level4Boxes_12: 4881390493231649386
+      Level4Boxes_13: -3590608314938811809
+      Level4Boxes_2: 8455061854444729064
+      Level4Boxes_3: 6982227973593184929
+      Level4Boxes_4: -2405784386492924015
+      Level4Boxes_5: -2697755897474725799
+      Level4Boxes_6: -2054457455653175392
+      Level4Boxes_7: -690993514803088681
+      Level4Boxes_8: -3378579688349473562
+      Level4Boxes_9: 3679244582436896162
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
