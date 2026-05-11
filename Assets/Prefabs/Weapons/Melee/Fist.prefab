@@ -62,7 +62,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8192
-  swingBoxDimensions: {x: 1.5, y: 1}
+  swingBoxDimensions: {x: 1.5, y: 0.5}
   attackMissSound: {fileID: 8300000, guid: 353606c5c2d57ca4ab6b0f2f4c17ef40, type: 3}
 --- !u!58 &2790260923495399369
 CircleCollider2D:
