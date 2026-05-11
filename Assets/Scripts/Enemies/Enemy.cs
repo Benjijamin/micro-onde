@@ -1,4 +1,5 @@
 using System.Collections;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering.Universal;
@@ -12,7 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private LayerMask rayMask;
     [SerializeField] private float sightAngle;
     [SerializeField] private float sightRange;
- 
+
     [SerializeField] private Light2D revealLight;
     [SerializeField] private float revealDuration;
 
@@ -23,6 +24,13 @@ public class Enemy : MonoBehaviour
 
     public bool hasBeenAlerted = false;
     public bool hasBeenPinged = false;
+
+    [Foldout("Audio")]
+    [SerializeField] private AudioClip footstep;
+    [Foldout("Audio")]
+    [SerializeField] private float travelDistancePerStep;
+
+    private float distanceTravelled;
 
     private void Awake()
     {
@@ -98,6 +106,13 @@ public class Enemy : MonoBehaviour
             isRevealed = false;
             StopAllCoroutines();
             StartCoroutine(HideCoroutine());
+        }
+
+        distanceTravelled += agent.velocity.magnitude * Time.fixedDeltaTime;
+        if(distanceTravelled > travelDistancePerStep)
+        {
+            distanceTravelled -= travelDistancePerStep;
+            AudioManager.instance.Play(footstep, AudioManager.instance.SFXVolume, false, true, transform.position);
         }
     }
 
