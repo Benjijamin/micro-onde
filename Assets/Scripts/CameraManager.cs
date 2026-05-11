@@ -25,7 +25,6 @@ public class CameraManager : MonoBehaviour
     public static CameraManager instance;
 
     private Vector3 CursorPosition => Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    private Vector3 TargetPosition => Vector3.Lerp(objectToFollow.position, CursorPosition, cursorInfluence);
 
     private void Awake()
     {

@@ -28,7 +28,7 @@ public class PatrolState : RootState<Enemy>
             lookDirection = (Vector2)patrolPoints[patrolPointIndex].position - (Vector2)transform.position; 
         }
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-        parent.transform.rotation = Quaternion.Lerp(parent.transform.rotation, Quaternion.Euler(0, 0, 90 + angle), turnLerpValue);
+        parent.transform.rotation = Quaternion.Lerp(parent.transform.rotation, Quaternion.Euler(0, 0, angle), turnLerpValue);
         if (isPaused) { return; }
         if (distanceRemaining < distanceThreshold)
         {
