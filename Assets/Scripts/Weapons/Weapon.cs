@@ -63,7 +63,7 @@ public class Weapon : Interactable
         spriteRenderer.sortingOrder = heldSortOrder;
 
         wielder.GetComponent<CharacterAnimationController>().SetAnimation(characterPose);
-        AudioManager.instance.Play(readySound, AudioManager.instance.SFXVolume, false, false, transform.position);
+        AudioManager.instance.Play(readySound, AudioType.Sfx, false, false, transform.position);
     }
 
     public virtual void Drop()

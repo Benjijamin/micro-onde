@@ -1,4 +1,3 @@
-using System.Collections;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,6 +35,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         levelSelectionButton.onClick.AddListener(GoToLevelSelection);
+        optionsButton.onClick.AddListener(GoToLevelSettings);
         quitButton.onClick.AddListener(Application.Quit);
 
         Button[] buttons = GetComponentsInChildren<Button>(true);
@@ -44,26 +44,30 @@ public class MainMenu : MonoBehaviour
             button.onClick.AddListener(OnButtonClick);
         }
 
-        menuMusicPlayer = AudioManager.instance.Play(menuMusic, AudioManager.instance.musicVolume, true);
+        menuMusicPlayer = AudioManager.instance.Play(menuMusic, AudioType.Music, true);
     }
 
     private void OnButtonClick()
     {
-        AudioManager.instance.Play(clickSound, AudioManager.instance.SFXVolume, false);
+        AudioManager.instance.Play(clickSound, AudioType.Sfx, false);
     }
 
     public void GoToLevelSelection()
     {
         startMenu.SetActive(false);
-        //OptionsMenu.SetActive(false);
-
         levelSelectionMenu.SetActive(true);
+    }
+
+    public void GoToLevelSettings()
+    {
+        startMenu.SetActive(false);
+        OptionsMenu.SetActive(true);
     }
 
     public void GoToStartMenu()
     {
         levelSelectionMenu.SetActive(false);
-        //OptionsMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
 
         startMenu.SetActive(true);
     }

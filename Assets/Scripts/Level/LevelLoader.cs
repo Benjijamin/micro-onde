@@ -89,7 +89,7 @@ public class LevelLoader : MonoBehaviour
             StartCoroutine(FadeOutLevelStart(fadeOutTime));
             if (inGameAudioPlayer == null)
             {
-                inGameAudioPlayer = AudioManager.instance.Play(inGameTheme, AudioManager.instance.musicVolume, true);
+                inGameAudioPlayer = AudioManager.instance.Play(inGameTheme, AudioType.Music, true);
             }
         }
         else 

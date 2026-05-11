@@ -486,7 +486,7 @@ public class ScoreManager : MonoBehaviour
     {
         GameObject m = Instantiate(scoreMessagePrefab, messages);
         ScoreMessage sm = m.GetComponent<ScoreMessage>();
-        AudioManager.instance.Play(minorNotifSound, AudioManager.instance.SFXVolume, false, true);
+        AudioManager.instance.Play(minorNotifSound, AudioType.Sfx, false, true);
         sm.SetMessage(message.text, message.emphasis);
     }
 
@@ -503,7 +503,7 @@ public class ScoreManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         GameObject m = Instantiate(scoreMessagePrefab, middleOfScreen);
         ScoreMessage sm = m.GetComponent<ScoreMessage>();
-        AudioManager.instance.Play(majorNotifSound, AudioManager.instance.SFXVolume, false, true);
+        AudioManager.instance.Play(majorNotifSound, AudioType.Sfx, false, true);
         sm.SetMessage(message, emphasis);
     }
 
