@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ff9a4fbd9c436246bca5e184805c25c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun
-  interactText: 'Pick up [E]'
+  interactText: Pick up
   wielder: {fileID: 0}
   attackCooldown: 1
   damage: 7
