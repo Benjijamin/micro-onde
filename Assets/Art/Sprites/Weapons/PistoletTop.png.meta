@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ad928fdd7e182b8498813c1382eb0ef3
+guid: bfa3c07e550fe684689e9619e1759781
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8364033024573163210
-    second: Level4Walls_0
+      213: 1387830345618318802
+    second: PistoletTop_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Level4Walls_0
+      name: PistoletTop_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 218
-        width: 1586
-        height: 578
+        x: 398
+        y: 604
+        width: 20
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ac6c157a8b3031470800000000000000
-      internalID: 8364033024573163210
+      spriteID: 2d56617a850924310800000000000000
+      internalID: 1387830345618318802
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Level4Walls_0: 8364033024573163210
+      PistoletTop_0: 1387830345618318802
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

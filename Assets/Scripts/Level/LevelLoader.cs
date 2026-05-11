@@ -91,6 +91,7 @@ public class LevelLoader : MonoBehaviour
             {
                 inGameAudioPlayer = AudioManager.instance.Play(inGameTheme, AudioType.Music, true);
             }
+            ScoreManager.Instance.RecordScore();
         }
         else 
         {
