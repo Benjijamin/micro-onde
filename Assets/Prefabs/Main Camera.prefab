@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjectFollow
   objectToFollow: {fileID: 0}
   baseOffset: {x: 0, y: 0, z: -10}
-  smoothTranslationTime: 0.2
+  smoothTranslationTime: 0.3
   cursorInfluence: 0.2
   cursorRatioThreshold: 0.5
   maxPanAngle: 3
