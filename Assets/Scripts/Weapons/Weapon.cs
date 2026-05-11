@@ -16,6 +16,8 @@ public class Weapon : Interactable
     [SerializeField] protected Sprite heldSprite;
     [SerializeField] protected Sprite droppedSprite;
     [SerializeField] protected CharacterAnim characterPose;
+    [SerializeField] private int heldSortOrder = 1;
+    [SerializeField] private int droppedSortOrder = -1;
 
     protected Animator animator;
     protected SpriteRenderer spriteRenderer;
@@ -58,7 +60,7 @@ public class Weapon : Interactable
         GetComponent<CircleCollider2D>().enabled = false;
         animator = GetComponentInParent<Animator>();
         spriteRenderer.sprite = heldSprite;
-        spriteRenderer.sortingOrder = 2;
+        spriteRenderer.sortingOrder = heldSortOrder;
 
         wielder.GetComponent<CharacterAnimationController>().SetAnimation(characterPose);
         AudioManager.instance.Play(readySound, AudioManager.instance.SFXVolume, false, false, transform.position);
@@ -66,11 +68,12 @@ public class Weapon : Interactable
 
     public virtual void Drop()
     {
+        if(this is DefaultWeapon) { return; }
         GetComponent<CircleCollider2D>().enabled = true;
         wielder = null;
         animator = null;
         spriteRenderer.sprite = droppedSprite;
-        spriteRenderer.sortingOrder = 0;
+        spriteRenderer.sortingOrder = droppedSortOrder;
     }
 
     public float GetAttackCooldown()

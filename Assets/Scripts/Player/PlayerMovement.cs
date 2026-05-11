@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using Spine.Unity;
 using UnityEngine;
 
@@ -11,6 +12,13 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private CharacterAnimationController animController;
+
+    [Foldout("Audio")]
+    [SerializeField] private AudioClip footstep;
+    [Foldout("Audio")]
+    [SerializeField] private float travelDistancePerStep;
+
+    private float distanceTravelled;
 
     private void Awake()
     {
@@ -60,6 +68,13 @@ public class PlayerMovement : MonoBehaviour
         else if (!isWalking && moveDir != Vector2.zero)
         {
             animController.SetAnimation(CharacterAnim.Walk);
+        }
+
+        distanceTravelled += rb.linearVelocity.magnitude * Time.fixedDeltaTime;
+        if(distanceTravelled > travelDistancePerStep)
+        {
+            distanceTravelled -= travelDistancePerStep;
+            AudioManager.instance.Play(footstep, AudioManager.instance.SFXVolume, false, true, transform.position);
         }
     }
 
