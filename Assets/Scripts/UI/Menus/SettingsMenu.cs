@@ -48,7 +48,7 @@ public class SettingsMenu : MonoBehaviour
         if (PlayerPrefs.HasKey(key))
         {
             slider.value = PlayerPrefs.GetFloat(key);
-            audioMixer.SetFloat(key, Mathf.Log10(masterSlider.value) * 20);
+            audioMixer.SetFloat(key, Mathf.Log10(slider.value) * 20);
         }
     }
 }
