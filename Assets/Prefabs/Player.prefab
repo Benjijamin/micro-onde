@@ -252,8 +252,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: pick up
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1bf8e1d138566ef42960bfd0e16422bb, type: 2}
-  m_sharedMaterial: {fileID: 4656976445606304406, guid: 1bf8e1d138566ef42960bfd0e16422bb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c9e2ed7230e457d4898ab27f3f400bca, type: 2}
+  m_sharedMaterial: {fileID: 8254022726344920896, guid: c9e2ed7230e457d4898ab27f3f400bca, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -35.908447, w: 0}
+  m_margin: {x: 0, y: 0, z: -57.12787, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1203,7 +1203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 72.6, y: 0}
+  m_AnchoredPosition: {x: 89.4, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &173075408779846000
@@ -1262,7 +1262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5450718709200759693
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1369,7 +1369,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 95, y: -50}
-  m_SizeDelta: {x: 150, y: 100}
+  m_SizeDelta: {x: 183.83, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7912231142194624212
 CanvasRenderer:
@@ -1401,8 +1401,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0 / 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1bf8e1d138566ef42960bfd0e16422bb, type: 2}
-  m_sharedMaterial: {fileID: 4656976445606304406, guid: 1bf8e1d138566ef42960bfd0e16422bb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c9e2ed7230e457d4898ab27f3f400bca, type: 2}
+  m_sharedMaterial: {fileID: 8254022726344920896, guid: c9e2ed7230e457d4898ab27f3f400bca, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1468,7 +1468,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6924064039898287417

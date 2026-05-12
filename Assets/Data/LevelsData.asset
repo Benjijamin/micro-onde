@@ -14,20 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelsData
   Levels:
   - Scene: Level1
-    IntroText: I can hear something...
+    IntroText: Level 1
     IntroDuration: 3
   - Scene: Level3
-    IntroText: 'level 2 '
+    IntroText: Level 2
     IntroDuration: 3
   - Scene: Level2
-    IntroText: level 3
+    IntroText: Level 3
     IntroDuration: 3
   - Scene: Level4
-    IntroText: level 4
+    IntroText: Level 4
     IntroDuration: 3
   - Scene: Level5
-    IntroText: level 5
+    IntroText: Level 5
     IntroDuration: 3
   - Scene: Level6
-    IntroText: level 5
+    IntroText: Level 6
     IntroDuration: 3

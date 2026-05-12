@@ -70,8 +70,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1bf8e1d138566ef42960bfd0e16422bb, type: 2}
-  m_sharedMaterial: {fileID: 4656976445606304406, guid: 1bf8e1d138566ef42960bfd0e16422bb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a88078f0550dff343b4148784a1d93c2, type: 2}
+  m_sharedMaterial: {fileID: 8254022726344920896, guid: a88078f0550dff343b4148784a1d93c2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
