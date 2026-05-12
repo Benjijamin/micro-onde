@@ -3,6 +3,9 @@ using UnityEngine;
 public class AlertState : RootState<Enemy>
 {
     [Range(0, 1)][SerializeField] private float turnLerpValue;
+    [SerializeField] private float attackDelay;
+
+    private float attackTimer;
 
     public override void StateEnter()
     {
@@ -12,6 +15,7 @@ public class AlertState : RootState<Enemy>
             parent.GetAgent().isStopped = true;
         }
         parent.hasBeenAlerted = true;
+        attackTimer = attackDelay;
     }
 
     public override void StateUpdate()
@@ -31,10 +35,14 @@ public class AlertState : RootState<Enemy>
             angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             parent.GetWeapon().transform.rotation = Quaternion.Euler(0, 0, angle);
         }
-        if (parent.GetWeapon().CanAttack(parent.transform))
+
+
+        if (parent.GetWeapon().CanAttack(parent.transform) && attackTimer <= 0)
         {
             parent.GetWeapon().Attack(false);
         }
+
+        attackTimer -= Time.deltaTime;
     }
 
     public override void StateExit()

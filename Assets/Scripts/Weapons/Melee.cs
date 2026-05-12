@@ -26,7 +26,7 @@ public class Melee : Weapon
             }
             else
             {
-                enemy.GetComponentInParent<PlayerHealth>().TakeDamage(damage, direction);
+                enemy?.GetComponentInParent<PlayerHealth>()?.TakeDamage(damage, direction);
             }
         }
         AudioManager.instance.Play(enemies.Length > 0 ? attackSound : attackMissSound, AudioType.Sfx, false, true, transform.position);

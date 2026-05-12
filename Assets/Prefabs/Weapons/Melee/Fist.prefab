@@ -48,7 +48,7 @@ MonoBehaviour:
   interactText: 'Pick up [E]'
   wielder: {fileID: 0}
   attackCooldown: 0.5
-  damage: 5
+  damage: 99999
   heldSprite: {fileID: 0}
   droppedSprite: {fileID: 0}
   characterPose: 1
