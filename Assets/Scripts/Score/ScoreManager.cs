@@ -38,6 +38,11 @@ public class ScoreManager : MonoBehaviour
     [Space]
 
     [SerializeField]
+    private GameObject canvas;
+
+    [Space]
+
+    [SerializeField]
     private TextMeshProUGUI scoreText;
     [SerializeField]
     private int scoreDisplaySpeed;
@@ -120,10 +125,15 @@ public class ScoreManager : MonoBehaviour
 
     private void OnSceneLoad(Scene scene, LoadSceneMode sceneMode)
     {
-        if (scene.name != "MainMenu") 
+        if (scene.name != "MainMenu" && scene.name != "ScoreScreen")
         {
+            canvas.SetActive(true);
             scoreTimer = 0f;
             noMorePoints = false;
+        }
+        else 
+        {
+            canvas.SetActive(false);
         }
     }
 
@@ -383,7 +393,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public float GetScore() 
+    public int GetScore() 
     {
         return Score;
     }

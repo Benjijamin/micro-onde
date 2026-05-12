@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     [Scene, SerializeField] private string mainMenu;
+    [Scene, SerializeField] private string scoreScreen;
     [Scene, SerializeField] private LevelsData levelsData;
 
     [SerializeField] private GameObject canvas;
@@ -48,7 +49,7 @@ public class LevelLoader : MonoBehaviour
         if (currentIndex + 1 >= levelsData.Levels.Count)
         {
             inGameAudioPlayer.FadeOut(0.5f, () => { inGameAudioPlayer.Abort(); inGameAudioPlayer = null; });
-            SceneManager.LoadScene(mainMenu);
+            SceneManager.LoadScene(scoreScreen);
         }
         else
             LoadLevel(currentIndex + 1);
@@ -69,6 +70,16 @@ public class LevelLoader : MonoBehaviour
         currentIndex = index;
     }
 
+    public void LoadMainMenu()
+    {
+        if (inGameAudioPlayer != null) 
+        { 
+            inGameAudioPlayer.FadeOut(0.5f, () => { inGameAudioPlayer.Abort(); inGameAudioPlayer = null; }); 
+        }
+        SceneManager.LoadScene(mainMenu);
+        currentIndex = 0;
+    }
+
     private IEnumerator FadeInScene(int sceneIndex, float duration)
     {
         canvas.gameObject.SetActive(true);
@@ -84,12 +95,15 @@ public class LevelLoader : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name != "MainMenu")
-        { 
-            StartCoroutine(FadeOutLevelStart(fadeOutTime));
-            if (inGameAudioPlayer == null)
+        if (scene.name != mainMenu)
+        {
+            if (scene.name != scoreScreen)
             {
-                inGameAudioPlayer = AudioManager.instance.Play(inGameTheme, AudioType.Music, true);
+                StartCoroutine(FadeOutLevelStart(fadeOutTime));
+                if (inGameAudioPlayer == null)
+                {
+                    inGameAudioPlayer = AudioManager.instance.Play(inGameTheme, AudioType.Music, true);
+                }
             }
             ScoreManager.Instance.RecordScore();
         }

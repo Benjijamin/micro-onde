@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   mainMenu: MainMenu
+  scoreScreen: ScoreScreen
   levelsData: {fileID: 11400000, guid: fb8a5216267f72f4595ea7c9c16fc456, type: 2}
   canvas: {fileID: 8670743729315764320}
   anim: {fileID: 7586475401788701577}
@@ -53,7 +54,7 @@ MonoBehaviour:
   fadeOut: {fileID: 7400000, guid: f5c7dfd79c6223a47af862dede12f443, type: 2}
   fadeInTime: 2
   fadeOutTime: 2
-  inGameTheme: {fileID: 0}
+  inGameTheme: {fileID: 8300000, guid: d2e40032d890b274fb878db67e3b5f55, type: 3}
 --- !u!1 &6064008191750687920
 GameObject:
   m_ObjectHideFlags: 0
