@@ -139,6 +139,7 @@ public class ScoreManager : MonoBehaviour
         ResetBonusMultis();
         ResetKillMultis();
         messageQueue.Clear();
+        StopAllCoroutines();
     }
 
     private void Start() 
