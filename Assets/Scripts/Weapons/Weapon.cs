@@ -80,4 +80,9 @@ public class Weapon : Interactable
     {
         return attackCooldown;
     }
+
+    public CharacterAnim GetCharacterPose()
+    {
+        return characterPose;
+    }
 }
