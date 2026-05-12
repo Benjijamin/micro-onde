@@ -1169,14 +1169,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 609937919421400353, guid: e8917380ba6984d43a3b14fd49d282b4, type: 3}
-      propertyPath: inGameTheme
-      value: 
-      objectReference: {fileID: 8300000, guid: d2e40032d890b274fb878db67e3b5f55, type: 3}
-    - target: {fileID: 609937919421400353, guid: e8917380ba6984d43a3b14fd49d282b4, type: 3}
-      propertyPath: scoreScreen
-      value: MainMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 1705415924265370829, guid: e8917380ba6984d43a3b14fd49d282b4, type: 3}
       propertyPath: m_Name
       value: LevelLoader
