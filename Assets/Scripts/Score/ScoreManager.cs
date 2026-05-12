@@ -135,6 +135,10 @@ public class ScoreManager : MonoBehaviour
         {
             canvas.SetActive(false);
         }
+
+        ResetBonusMultis();
+        ResetKillMultis();
+        messageQueue.Clear();
     }
 
     private void Start() 

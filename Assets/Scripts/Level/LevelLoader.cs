@@ -26,6 +26,14 @@ public class LevelLoader : MonoBehaviour
 
     public static LevelLoader instance { get; private set; }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            LoadMainMenu();
+        }
+    }
+
     private void Awake()
     {
         if (instance != null)
